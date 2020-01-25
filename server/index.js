@@ -1,25 +1,52 @@
 const express = require('express');
 const db = require('../database');
-
 const app = express();
-const PORT = process.env.PORT || 3000;
-// TODO - implement solution for backend
 
-// Create GET API endpoint
-// TODO - Create all database connections
-// TODO -
+
+const PORT = process.env.PORT || 3030;
+
+
+// Create database connection
+db.connection.connect(function (err) {
+  if (err) {
+    console.error('Database connection failed: ' + err.stack);
+    return;
+  }
+  console.log('Connected to database.');
+});
 
 // Serve the public folder for client
-app.use(express.static(__dirname + '/../public'));
+app.use('/:location_id', express.static('public'));
+// Use JSON for data parsing
+app.use(express.json());
+
 
 // Router for the API per https://expressjs.com/en/guide/routing.html
+app.get('/api/reviews/languages/', (req, res) => {
+  db.getLanguages((error, data) => {
+    if (error) {
+      console.error(error);
+      res.status(500).send({ error: 'something blew up' })
+    } else {
+      res.status(200).send(data);
+    }
+  })
+  console.log(req.body);
+});
+
 app.get('/api/reviews/:location_id/', (req, res) => {
-  console.log(req.params);
-  res.send(req.params);
-
-
   // TODO - place the db function for GET reviews here
-})
+  db.getReviews(req.params.location_id, (error, data) => {
+    if (error) {
+      console.error(error);
+      res.status(500).send({ error: 'something blew up' })
+    } else {
+      console.log(req.params);
+      res.status(200).send(data);
+    }
+  });
+});
+
 app.listen(PORT, () => {
   console.log(`🌐  Listening on port ${PORT}!  🌐`);
 });
