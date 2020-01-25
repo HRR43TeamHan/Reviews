@@ -1,0 +1,41 @@
+{
+  "name": "heskett-fec-reviews",
+  "version": "1.0.0",
+  "description": "Mimicry of tripadvisors reviews module for HRR43 FEC",
+  "main": "server/index.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mysql": "^2.18.1",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.3",
+    "@babel/preset-env": "^7.8.3",
+    "@babel/preset-react": "^7.8.3",
+    "babel-loader": "^8.0.6",
+    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor.git",
+    "jest": "^25.1.0",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
+  },
+  "scripts": {
+    "postinstall": "curl -s https://raw.githubusercontent.com/reactorcore/pomander/master/bin/install | bash",
+    "seeder": "echo \"TODO- setup seeder start script\" && exit 1",
+    "setup": "mysql -u root < ./database/schema.sql",
+    "devstart": "nodemon server/index.js --ignore src --ignore public",
+    "webpack": "webpack --watch",
+    "start": "node server/index.js",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/incogitance/Reviews.git"
+  },
+  "author": "Jordan J. Heskett",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/incogitance/Reviews/issues"
+  },
+  "homepage": "https://github.com/incogitance/Reviews#readme"
+}
