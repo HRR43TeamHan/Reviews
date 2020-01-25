@@ -5,6 +5,7 @@
   "main": "server/index.js",
   "dependencies": {
     "express": "^4.17.1",
+    "faker": "^4.1.0",
     "mysql": "^2.18.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
@@ -21,8 +22,8 @@
   },
   "scripts": {
     "postinstall": "curl -s https://raw.githubusercontent.com/reactorcore/pomander/master/bin/install | bash",
-    "seeder": "echo \"TODO- setup seeder start script\" && exit 1",
-    "setup": "mysql -u root < ./database/schema.sql",
+    "seeder": "node seeder.js",
+    "setup": "mysql -u root < ./schema.sql",
     "devstart": "nodemon server/index.js --ignore src --ignore public",
     "webpack": "webpack --watch",
     "start": "node server/index.js",
