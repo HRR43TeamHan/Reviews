@@ -14,7 +14,7 @@ CREATE TABLE Languages (
 
 CREATE TABLE Users (
   ID INTEGER NOT NULL AUTO_INCREMENT,
-  username VARCHAR(16),
+  username VARCHAR(24),
   `password` VARCHAR(255),
   `created-at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   UNIQUE (username),
@@ -34,6 +34,7 @@ CREATE TABLE Reviews (
   title VARCHAR(121) NOT NULL,
   language_ID INTEGER NOT NULL,
   location_ID INTEGER NOT NULL,
+  user_location_ID INTEGER NOT NULL,
   user_ID INTEGER NOT NULL,
   travel_date DATE,
   travel_type TINYINT(1) NOT NULL,
@@ -56,4 +57,7 @@ CREATE TABLE Reviews (
 
 
 INSERT INTO Locations (location) VALUES
- ("Tatooine"), ("Mytus VII"), ("J't'p'tan"), ("Yavin 4"), ("Kuat"), ("Almania"), ("Nim Drovis"), ("Antar Four"), ("Bothawui"), ("Sullust"), ("Chandrila"), ("Borleias"), ("Pzob"), ("Taanab"), ("Ambria"), ("Umgul"), ("Thyferra"), ("Khomm"), ("Munto Codru"), ("Yavin 8"), ("Ryloth"), ("Firrerre"), ("Alderaan"), ("Agamar"), ("Bimmisaari"), ("Aridus"), ("Ylesia"), ("Balmorra"), ("Abregado-rae"), ("Mrlsst"), ("Kessel"), ("Kothlis"), ("Bespin"), ("Galantos"), ("Pydyr"), ("Ord Mantell"), ("Teyr"), ("Nam Chorios"), ("Atzerri"), ("Dagobah"), ("Nkllon"), ("Hapes"), ("Kashyyyk"), ("Vergesso Asteroids"), ("Coruscant"), ("Zhar"), ("Mon Calamari"), ("Tynna"), ("Corellia"), ("Onderon"), ("Byss"), ("Bestine IV"), ("Alzoc III"), ("Sacorria"), ("Nal Hutta and Nar Shaddaa"), ("Carida"), ("Barab I"), ("Mimban"), ("Dathomir"), ("N'zoth"), ("Myrkr"), ("Selonia"), ("Eriadu"), ("Roon"), ("Dellalt"), ("Belsavis"), ("Ralltiir"), ("Ammuud"), ("Bakura"), ("Ithor"), ("Da Soocha V"), ("Rafa V"), ("Ossus"), ("Bilbringi"), ("Ando"), ("Garos IV"), ("Talus), (Tralus), (and Centerpoint Station"), ("Dantooine"), ("Duro"), ("Rodia"), ("Etti IV"), ("Drall"), ("Yavin 13"), ("Vortex"), ("Fondor"), ("Aquaris"), ("Telti"), ("Korriban"), ("Arkania"), ("Lwhekk"), ("Hoth"), ("Endor"), ("M'haeli"), ("Anoth"), ("Honoghr"), ("Gamorr"), ("Wayland"), ("Carratos"), ("Talasea"), ("Kalarba")
+ ("Tatooine"), ("Mytus VII"), ("J't'p'tan"), ("Yavin 4"), ("Kuat"), ("Almania"), ("Nim Drovis"), ("Antar Four"), ("Bothawui"), ("Sullust"), ("Chandrila"), ("Borleias"), ("Pzob"), ("Taanab"), ("Ambria"), ("Umgul"), ("Thyferra"), ("Khomm"), ("Munto Codru"), ("Yavin 8"), ("Ryloth"), ("Firrerre"), ("Alderaan"), ("Agamar"), ("Bimmisaari"), ("Aridus"), ("Ylesia"), ("Balmorra"), ("Abregado-rae"), ("Mrlsst"), ("Kessel"), ("Kothlis"), ("Bespin"), ("Galantos"), ("Pydyr"), ("Ord Mantell"), ("Teyr"), ("Nam Chorios"), ("Atzerri"), ("Dagobah"), ("Nkllon"), ("Hapes"), ("Kashyyyk"), ("Vergesso Asteroids"), ("Coruscant"), ("Zhar"), ("Mon Calamari"), ("Tynna"), ("Corellia"), ("Onderon"), ("Byss"), ("Bestine IV"), ("Alzoc III"), ("Sacorria"), ("Nal Hutta and Nar Shaddaa"), ("Carida"), ("Barab I"), ("Mimban"), ("Dathomir"), ("N'zoth"), ("Myrkr"), ("Selonia"), ("Eriadu"), ("Roon"), ("Dellalt"), ("Belsavis"), ("Ralltiir"), ("Ammuud"), ("Bakura"), ("Ithor"), ("Da Soocha V"), ("Rafa V"), ("Ossus"), ("Bilbringi"), ("Ando"), ("Garos IV"), ("Talus), (Tralus), (and Centerpoint Station"), ("Dantooine"), ("Duro"), ("Rodia"), ("Etti IV"), ("Drall"), ("Yavin 13"), ("Vortex"), ("Fondor"), ("Aquaris"), ("Telti"), ("Korriban"), ("Arkania"), ("Lwhekk"), ("Hoth"), ("Endor"), ("M'haeli"), ("Anoth"), ("Honoghr"), ("Gamorr"), ("Wayland"), ("Carratos"), ("Talasea"), ("Kalarba");
+
+INSERT INTO Languages (title) VALUES
+ ("ENGLISH"), ("HINDI"), ("ARABIC"), ("PORTUGUESE"), ("BENGALI"), ("RUSSIAN"), ("JAPANESE"), ("LAHNDA"), ("JAVANESE"), ("GERMAN"), ("KOREAN"), ("FRENCH"), ("TELUGU"), ("TURKISH"), ("TAMIL"), ("VIETNAMESE"), ("URDU");
