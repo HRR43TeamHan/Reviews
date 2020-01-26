@@ -1,13 +1,17 @@
 const faker = require('faker');
 const db = require('./database')
 //faker.seed(12);
-// db.connect(function(err) {
-//   if (err) {
-//     console.error('Database connection failed: ' + err.stack);
-//     return;
-//   }
-//   console.log('Connected to database.');
-// });
+
+
+// Because the seeder runs outside of the app we need to first connect to the db
+db.connection.connect(function(err) {
+  if (err) {
+    console.error('Database connection failed: ' + err.stack);
+    return;
+  }
+  console.log('Connected to database.');
+});
+
 
 //insert 200-300 reviews per location
 var usersCount = 0;
@@ -18,7 +22,7 @@ var seedUsers = (amount) => {
       username: faker.name.firstName() + ' ' + faker.name.lastName()
     }
     params = [t.username]
-    db.query('INSERT INTO Users (username) VALUES (?)', params, (err, data) => {
+    db.connection.query('INSERT INTO Users (username) VALUES (?)', params, (err, data) => {
       if (err) {
         console.error(err);
         console.log('error seeding Users TABLE');
@@ -61,7 +65,7 @@ var seedReviews = (amount) => {
     }
     let params = [t.description, t.title, t.language_ID, t.location_ID, t.user_location_ID, t.user_ID, t.travel_date, t.travel_type, t.rating_overall, t.rating_expenses, t.rating_location, t.rating_rooms, t.rating_service, t.user_thoughts, t.user_tips];
     //TODO - add the photo urls
-    db.query('INSERT INTO Reviews (description, title, language_ID, location_ID, user_location_ID, user_ID, travel_date, travel_type, rating_overall, rating_expenses, rating_location, rating_rooms, rating_service, user_thoughts, user_tips) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', params, (err, data) => {
+    db.connection.query('INSERT INTO Reviews (description, title, language_ID, location_ID, user_location_ID, user_ID, travel_date, travel_type, rating_overall, rating_expenses, rating_location, rating_rooms, rating_service, user_thoughts, user_tips) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', params, (err, data) => {
       if (err) {
         console.log('error seeding Reviews TABLE', err);
         db.end();
@@ -71,7 +75,7 @@ var seedReviews = (amount) => {
         if (reviewsCount < amount) {
           seedIt();
         } else {
-          db.end();
+          db.connection.end();
         }
       }
     });
