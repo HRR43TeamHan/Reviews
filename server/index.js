@@ -26,11 +26,11 @@ app.get('/api/reviews/languages/', (req, res) => {
   db.getLanguages((error, data) => {
     if (error) {
       console.error(error);
-      res.status(500).send({ error: 'something blew up' })
+      res.status(500).send({ error: 'something blew up' });
     } else {
       res.status(200).send(data);
     }
-  })
+  });
   console.log(req.body);
 });
 
@@ -39,7 +39,7 @@ app.get('/api/reviews/:location_id/', (req, res) => {
   db.getReviews(req.params.location_id, (error, data) => {
     if (error) {
       console.error(error);
-      res.status(500).send({ error: 'something blew up' })
+      res.status(500).send({ error: 'something blew up' });
     } else {
       console.log(req.params);
       res.status(200).send(data);
