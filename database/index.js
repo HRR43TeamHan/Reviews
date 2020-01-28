@@ -1,11 +1,10 @@
 var mysql = require('mysql');
 var config;
 try {
-  config = require('./config.js')
-}
-catch (error) {
+  config = require('./config.js');
+} catch (error) {
   console.error(error);
-  console.error('config.js Not Found, Reverting to process.env!')
+  console.error('config.js Not Found, Reverting to process.env!');
 }
 
 const connection = mysql.createConnection({
@@ -20,7 +19,7 @@ const connection = mysql.createConnection({
 const getLanguages = (callback) => {
   // Here we return the list of Languages in the database
   connection.query('SELECT * FROM Languages', (error, results, fields) => {
-    if (error) callback(error, null);
+    if (error) { callback(error, null); }
     console.log('fields: ', fields);
     // convert into JSON object for O(1) complexity
     var data = {};
@@ -31,15 +30,34 @@ const getLanguages = (callback) => {
     console.log(data);
     callback(null, data);
   });
-}
+};
 
-const getReviews = (location_ID, callback) => {
+const getReviews = (locationID, callback) => {
   // Here we return the list of Reviews based on the current Location
-  connection.query(`SELECT * FROM Reviews WHERE location_ID=${location_ID}`, (error, results, fields) => {
-    if (error) callback(error, null);
-    callback(null,results);
-  })
-}
+  connection.query(`SELECT
+  Reviews.title,
+  Users.username,
+  Reviews.user_thoughts,
+  Reviews.user_tips,
+  Reviews.description,
+  Reviews.language_ID,
+  Reviews.travel_date,
+  Reviews.travel_type,
+  Reviews.rating_overall,
+  Reviews.rating_expenses,
+  Reviews.rating_location,
+  Reviews.rating_rooms,
+  Reviews.rating_service,
+  Locations.location,
+  Reviews.photos
+  FROM ((Reviews
+  INNER JOIN Locations ON Reviews.user_location_ID = Locations.ID)
+  INNER JOIN Users ON Reviews.user_ID = Users.ID)
+  WHERE Reviews.location_ID=${locationID}`, (error, results, fields) => {
+    if (error) { callback(error, null); }
+    callback(null, results);
+  });
+};
 //db.end();
 module.exports = {
   connection,
