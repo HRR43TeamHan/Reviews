@@ -1,5 +1,6 @@
-var mysql = require('mysql');
-var config;
+const mysql = require('mysql');
+
+let config;
 try {
   config = require('./config.js');
 } catch (error) {
@@ -13,7 +14,7 @@ const connection = mysql.createConnection({
   user: process.env.RDS_USERNAME || config.USERNAME,
   database: process.env.RDS_DATABASE || config.DATABASE,
   password: process.env.RDS_PASSWORD,
-  port: process.env.RDS_PORT
+  port: process.env.RDS_PORT,
 });
 
 const getLanguages = (callback) => {
@@ -22,8 +23,8 @@ const getLanguages = (callback) => {
     if (error) { callback(error, null); }
     console.log('fields: ', fields);
     // convert into JSON object for O(1) complexity
-    var data = {};
-    for (var i = 0; i < results.length; i++) {
+    const data = {};
+    for (let i = 0; i < results.length; i++) {
       data[results[i].ID] = results[i].title;
     }
 
@@ -58,9 +59,9 @@ const getReviews = (locationID, callback) => {
     callback(null, results);
   });
 };
-//db.end();
+// db.end();
 module.exports = {
   connection,
   getLanguages,
-  getReviews
+  getReviews,
 };
