@@ -11,7 +11,8 @@
     "faker": "^4.1.0",
     "mysql": "^2.18.1",
     "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "react-dom": "^16.12.0",
+    "recompose": "^0.30.0"
   },
   "devDependencies": {
     "@babel/core": "^7.8.3",
@@ -19,6 +20,8 @@
     "@babel/preset-react": "^7.8.3",
     "@emotion/babel-preset-css-prop": "^10.0.27",
     "babel-loader": "^8.0.6",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-plugin-import": "^2.20.0",

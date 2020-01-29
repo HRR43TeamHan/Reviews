@@ -1,7 +1,9 @@
+/* eslint-disable no-console */
 const mysql = require('mysql');
 
 let config;
 try {
+  // eslint-disable-next-line global-require
   config = require('./config.js');
 } catch (error) {
   console.error(error);
@@ -19,12 +21,11 @@ const connection = mysql.createConnection({
 
 const getLanguages = (callback) => {
   // Here we return the list of Languages in the database
-  connection.query('SELECT * FROM Languages', (error, results, fields) => {
+  connection.query('SELECT * FROM Languages', (error, results) => {
     if (error) { callback(error, null); }
-    console.log('fields: ', fields);
     // convert into JSON object for O(1) complexity
     const data = {};
-    for (let i = 0; i < results.length; i++) {
+    for (let i = 0; i < results.length; i += 1) {
       data[results[i].ID] = results[i].title;
     }
 
@@ -54,7 +55,7 @@ const getReviews = (locationID, callback) => {
   FROM ((Reviews
   INNER JOIN Locations ON Reviews.user_location_ID = Locations.ID)
   INNER JOIN Users ON Reviews.user_ID = Users.ID)
-  WHERE Reviews.location_ID=${locationID}`, (error, results, fields) => {
+  WHERE Reviews.location_ID=${locationID}`, (error, results) => {
     if (error) { callback(error, null); }
     callback(null, results);
   });
