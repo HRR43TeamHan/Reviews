@@ -37,6 +37,7 @@ export const FilterTable = styled.ul({
   listStyle: 'none',
   display: 'inline-table',
 });
+
 export const FilterTableRow = styled.li({
   display: 'table-row',
 });

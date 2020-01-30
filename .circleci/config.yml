@@ -20,7 +20,7 @@ jobs:
       - checkout
 
       - run:
-          name: update-npm
+          name: update-npm to desired version
           command: 'sudo npm install -g npm@6.13.6'
       # Download and cache dependencies
       - restore_cache:
@@ -31,7 +31,7 @@ jobs:
       - run: npm install
 
       - run:
-          name: Creating necessary folders!🤺
+          name: Creating un-necessary folders!🤺
           command: |
             mkdir test-results;
       - save_cache:
@@ -48,7 +48,6 @@ jobs:
           environment:
             JEST_JUNIT_OUTPUT_DIR: "reports/junit/js-test-results.xml"
 
-      - run: npm test
       - store_test_results:
           path: reports/junit
 
