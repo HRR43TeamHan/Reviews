@@ -46,12 +46,12 @@ jobs:
           name: Run tests with JUnit as reporter
           command: npm test --ci --runInBand --reporters=default --reporters=jest-junit;
           environment:
-            JEST_JUNIT_OUTPUT_DIR: "reports/junit/js-test-results.xml"
+            JEST_JUNIT_OUTPUT_DIR: "reports/test-results"
 
       - store_test_results:
-          path: reports/junit
+          path: reports/test-results
 
       - store_artifacts: # special step to save test results as as artifact
           # Upload test summary for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
-          path: test-results.xml
-          prefix: test-results
+          path: junit.xml
+          prefix: reports/test-results
