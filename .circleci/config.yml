@@ -44,15 +44,15 @@ jobs:
       - run:
           name: "JavaScript Test Suite Hates me"
           environment:
-          JEST_JUNIT_OUTPUT: ~/.circleci/reports/test-results/jest/js-test-results.xml
+          JEST_JUNIT_OUTPUT: ~/test-results/jest/js-test-results.xml
           command:  |
-            mkdir -p ~/.circleci/reports/test-results;
-            mkdir -p ~/.circleci/reports/test-results/jest;
+            mkdir -p ~/test-results;
+            mkdir -p ~/test-results/jest;
             npm test;
 
       - run: npm test
       - store_test_results:
-          path: ~/.circleci/reports/test-results/jest/js-test-results.xml
+          path: ~/test-results/jest/js-test-results.xml
 
       - store_artifacts: # special step to save test results as as artifact
           # Upload test summary for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
