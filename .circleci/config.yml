@@ -44,7 +44,7 @@ jobs:
 
       - run: npm test
       - store_test_results:
-          path: test-results
+          path: junit.xml
 
       - store_artifacts: # special step to save test results as as artifact
           # Upload test summary for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
