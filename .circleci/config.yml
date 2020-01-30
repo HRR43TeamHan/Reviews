@@ -49,7 +49,7 @@ jobs:
             JEST_JUNIT_OUTPUT_DIR: "reports/test-results"
 
       - store_test_results:
-          path: reports/test-results
+          path: reports
 
       - store_artifacts: # special step to save test results as as artifact
           # Upload test summary for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
