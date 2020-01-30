@@ -30,6 +30,10 @@ jobs:
 
       - run: npm install
 
+      - run:
+          name: Creating necessary folders!🤺
+          command: |
+            mkdir test-results;
       - save_cache:
           paths:
             - node_modules
