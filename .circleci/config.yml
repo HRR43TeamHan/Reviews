@@ -41,9 +41,7 @@ jobs:
 
       # run tests!
 
-      - run:
-      name: Install JUnit coverage reporter
-      command: npm add --dev jest-junit
+
   - run:
       name: Run tests with JUnit as reporter
       command: jest --ci --runInBand --reporters=default --reporters=jest-junit
@@ -52,7 +50,7 @@ jobs:
 
       - run: npm test
       - store_test_results:
-          path: reports/junit/js-test-results.xml
+          path: reports
 
       - store_artifacts: # special step to save test results as as artifact
           # Upload test summary for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
