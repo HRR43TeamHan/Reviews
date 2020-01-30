@@ -20,7 +20,7 @@ jobs:
       - checkout
 
       - run:
-          name: update-npm to desired version
+          name: update-npm
           command: 'sudo npm install -g npm@6.13.6'
       # Download and cache dependencies
       - restore_cache:
@@ -31,9 +31,9 @@ jobs:
       - run: npm install
 
       - run:
-          name: Creating un-necessary folders!🤺
+          name: Creating necessary folders!🤺
           command: |
-            mkdir ~/reports/junit;
+            mkdir test-results;
       - save_cache:
           paths:
             - node_modules
@@ -44,14 +44,16 @@ jobs:
 
       - run:
           name: Run tests with JUnit as reporter
-          command: npm test --ci --runInBand --reporters=default --reporters=jest-junit;
+          command:
+          jest --ci --runInBand --reporters=default --reporters=jest-junit;
           environment:
-            JEST_JUNIT_OUTPUT_DIR: "~/reports/junit"
+            JEST_JUNIT_OUTPUT_DIR: "reports/junit/js-test-results.xml"
 
+      - run: npm test
       - store_test_results:
-          path: ~/reports/junit
+          path: reports/junit
 
       - store_artifacts: # special step to save test results as as artifact
           # Upload test summary for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
-          path: junit.xml
+          path: test-results.xml
           prefix: test-results
