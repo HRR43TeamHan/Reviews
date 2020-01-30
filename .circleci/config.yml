@@ -42,11 +42,11 @@ jobs:
       # run tests!
 
 
-  - run:
-      name: Run tests with JUnit as reporter
-      command: jest --ci --runInBand --reporters=default --reporters=jest-junit
-      environment:
-        JEST_JUNIT_OUTPUT_DIR: "reports/junit/js-test-results.xml"
+      - run:
+        name: Run tests with JUnit as reporter
+        command: jest --ci --runInBand --reporters=default --reporters=jest-junit
+        environment:
+          JEST_JUNIT_OUTPUT_DIR: "reports/junit/js-test-results.xml"
 
       - run: npm test
       - store_test_results:
