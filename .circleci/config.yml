@@ -20,12 +20,10 @@ jobs:
       - checkout
       - run:
           name: update-npm
-      - run:
-      name: Install JUnit coverage reporter
-      command: npm add --dev jest-junit
-
-        JEST_JUNIT_OUTPUT_DIR: "reports/junit/js-test-results.xml"
           command: 'sudo npm install -g npm@6.13.6'
+      - run:
+          name: Install JUnit coverage reporter
+          command: npm install --save-dev jest-junit
       # Download and cache dependencies
       - restore_cache:
           keys:
@@ -48,6 +46,7 @@ jobs:
       name: Run tests with JUnit as reporter
       command: jest --ci --runInBand --reporters=default --reporters=jest-junit
       environment:
+        JEST_JUNIT_OUTPUT_DIR: "test-results/js-test-results.xml"
       - store_test_results:
           path: test-results
 
