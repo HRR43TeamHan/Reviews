@@ -42,17 +42,17 @@ jobs:
       # run tests!
 
       - run:
-          name: "JavaScript Test Suite Hates me"
-          environment:
-          JEST_JUNIT_OUTPUT: ~/test-results/jest/js-test-results.xml
-          command:  |
-            mkdir -p ~/test-results;
-            mkdir -p ~/test-results/jest;
-            npm test;
+      name: Install JUnit coverage reporter
+      command: npm add --dev jest-junit
+  - run:
+      name: Run tests with JUnit as reporter
+      command: jest --ci --runInBand --reporters=default --reporters=jest-junit
+      environment:
+        JEST_JUNIT_OUTPUT_DIR: "reports/junit/js-test-results.xml"
 
       - run: npm test
       - store_test_results:
-          path: ~/test-results/jest/js-test-results.xml
+          path: reports/junit/js-test-results.xml
 
       - store_artifacts: # special step to save test results as as artifact
           # Upload test summary for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
