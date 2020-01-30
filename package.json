@@ -50,5 +50,8 @@
   "bugs": {
     "url": "https://github.com/incogitance/Reviews/issues"
   },
-  "homepage": "https://github.com/incogitance/Reviews#readme"
+  "homepage": "https://github.com/incogitance/Reviews#readme",
+  "jest-junit": {
+    "output": "./test-results/junit/results.xml"
+  }
 }
