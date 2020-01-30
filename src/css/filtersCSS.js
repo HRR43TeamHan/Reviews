@@ -87,6 +87,7 @@ export const CheckboxLabel = styled.label({
   display: 'table-cell',
   verticalAlign: 'middle',
   whiteSpace: 'nowrap',
+  cursor: 'pointer',
 });
 
 export const Checkbox = withProps({ type: 'checkbox' })(styled.input`
@@ -98,17 +99,18 @@ background-color: #fff;
 border: 1px solid #767676;
 border-radius: 2px;
 box-shadow: inset 0 0 2px rgba(0,0,0,.1);
-font: normal 700 normal 1em/1 TripAdvisor_Regular;
+font: normal 700 normal 1em/1 Arial;
 color: #fff;
 -webkit-font-smoothing: antialiased;
 /* Adjusts the position of the checkboxes on the text baseline */
-vertical-align: center;
+vertical-align: middle;
 /* Set here so that Windows' High-Contrast Mode can override */
-color: white;
 }
 ::before {
+  padding-bottom: 3px;
   content: "✔";
   visibility: hidden;
+  cursor: 'pointer',
 }
 :checked::before {
   display: inline-block;
@@ -117,8 +119,80 @@ color: white;
 }
 :checked {
   background: #078171;
-
   visibility: visible;
-transition: all 0.5s ease;
+  transition: all 0.5s ease;
 }
 `);
+
+export const RadioButton = withProps({ type: 'radio' })(styled.input`
+width: 1.02em;
+height: 1em;
+color: #fff;
+background-color: #fff;
+font: normal 700 normal 1.1em/0.65 Arial;
+border: 1px solid #767676;
+border-radius: 100%;
+text-align: center;
+outline: none;
+ ::before {
+   cursor: pointer
+   text-align: center;
+   padding: 0px 0px;
+   font-size: 1.2em!important;
+   content: "●";
+   visibility: hidden;
+   outline: none;
+ }
+ :checked::before {
+   display: inline-block;
+   visibility: visible;
+   vertical-align: middle;
+   outline: none;
+ }
+ :checked {
+   visibility: visible;
+   background-color: #078171;
+   outline: none;
+  }
+
+`);
+
+export const RadioButtonLabel = styled.label({
+  paddingLeft: '5px',
+  boxSizing: 'content-box',
+  display: 'table-cell',
+  verticalAlign: 'middle',
+  whiteSpace: 'nowrap',
+  cursor: 'pointer',
+});
+
+export const LanguageAmt = styled.label({
+
+});
+
+export const PopularMentionCard = styled.label({
+  padding: '12px',
+
+});
+
+export const SearchContainer = styled.div({
+  position: 'relative',
+  margin: '8px 0',
+  pointerEvents: 'auto',
+  backgroundColor: 'white',
+});
+
+export const SearchInput = withProps({ type: 'text' })(styled.input`
+padding: 12px;
+padding-left: 40px;
+width: -webkit-fill-available;
+border: 1px solid #e5e5e5;
+`);
+
+export const SearchIcon = styled.i({
+  color: '#078171',
+  position: 'absolute',
+  fontSize: '1em',
+  left: '12px',
+  bottom: '0.85em',
+});

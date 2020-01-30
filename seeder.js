@@ -20,6 +20,25 @@ var seedReviews = (amount) => {
   // TODO - add a query to check length of users and use dynamic variable vs static in user_ID
 
   let seedIt = () =>{
+    let overall = faker.random.number(160);
+    // this might need some tweaking for proper results
+    // we are implementing the following for more realistic looking ratings following a bell curve
+    if (overall > 80) {
+      // return an excellent rating
+      overall = 5;
+    } else if (overall > 40) {
+      // return a verGood rating
+      overall = 4;
+    } else if (overall > 20) {
+      // return a average rating
+      overall = 3;
+    } else if (overall > 5) {
+      // return a poor rating
+      overall = 2;
+    } else if (overall <= 5) {
+      // return a terrible rating
+      overall = 1;
+    }
     let t = {
       description: faker.lorem.paragraph(),
       title: faker.random.words(2),
@@ -29,7 +48,7 @@ var seedReviews = (amount) => {
       userID: faker.random.number(99) + 1,
       travelDate: faker.date.past(),
       travelType: faker.random.number(4) + 1,
-      ratingOverall: faker.random.number(4) + 1,
+      ratingOverall: overall,
       ratingExpenses: faker.random.number(4) + 1,
       ratingLocation: faker.random.number(4) + 1,
       ratingRooms: faker.random.number(4) + 1,

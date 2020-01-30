@@ -4,7 +4,7 @@ import {
   styles,
 } from '../css/tabsCSS.js';
 import AllFilters from './AllFilters.jsx';
-// import ReviewsList from './ReviewsList.jsx';
+import ReviewsList from './ReviewsList.jsx';
 
 class ReviewsContainer extends React.Component {
   constructor(props) {
@@ -56,6 +56,7 @@ class ReviewsContainer extends React.Component {
         <div>
 
           <AllFilters overall={overall} reviewsAmt={reviewsAmt} />
+          <ReviewsList/>
 
         </div>
       </div>

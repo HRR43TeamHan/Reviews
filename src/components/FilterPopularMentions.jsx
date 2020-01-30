@@ -14,11 +14,13 @@ class FilterPopularMentions extends React.Component {
     return (
       <PopularMentionsCard>
         <FilterTitle>
-          Popular Mentions go here! TODO - FilterPopularMentions.jsx
+          Popular Mentions
       </FilterTitle>
+        TODO - FilterPopularMentions.jsx
+              Tons of fake buttons here
       </PopularMentionsCard>
     )
   }
 }
 
-export default FilterLanguage;
+export default FilterPopularMentions;

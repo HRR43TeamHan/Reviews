@@ -12,7 +12,7 @@ export const styles = {
 
   input[type="checkbox"] {
     -webkit-appearance: none;
-    appearance: none;
+    outline: none;
   }
 `,
 

@@ -14,8 +14,16 @@ body {
 
 input[type="checkbox"] {
   -webkit-appearance: none;
-  appearance: none;
+  outline: none;
+  cursor: pointer;
 }
+
+input[type="radio"] {
+  -webkit-appearance: none;
+  outline: none;
+  cursor: pointer;
+}
+
 `;
 
 class App extends React.Component {
@@ -23,6 +31,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       reviews: [],
+      reviewsfiltered: [],
       reviewsAmt: 0,
       view: 1,
       overall: {
@@ -71,7 +80,6 @@ class App extends React.Component {
       })
       .catch((error) => {
         console.error(error);
-
       })
       .then((reviewsArray) => {
         // this is always executed
@@ -151,7 +159,6 @@ class App extends React.Component {
       reviews,
       reviewsAmt,
     } = this.state;
-
     const { handleTabClick } = this.handleTabClick;
     let componentContainer;
     if (view === 1) {

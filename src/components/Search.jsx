@@ -1,22 +1,24 @@
 import React from 'react';
-import styled from '@emotion/styled';
 import {
-
-} from '../css/tabsCSS.js';
+  SearchContainer,
+  SearchIcon,
+  SearchInput,
+} from '../css/filtersCSS.js';
 
 
 class Search extends React.Component {
   constructor(props) {
     super(props);
-
   }
 
   render() {
     return (
-      <div>Search Bar goes here!</div>
+      <SearchContainer>
+        <SearchIcon className="fas fa-search"></SearchIcon>
+        <SearchInput />
+      </SearchContainer>
     )
   }
-
 }
 
 export default Search;

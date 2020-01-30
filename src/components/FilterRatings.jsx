@@ -22,7 +22,7 @@ class FilterRatings extends React.Component {
         Average: false,
         Poor: false,
         Terrible: false,
-      }
+      },
     };
   }
 
@@ -31,6 +31,7 @@ class FilterRatings extends React.Component {
   // display: inline-block;
   // vertical-align: middle;
 
+  // TODO - Need to add the ability to click the bar to set the checkbox checked.
   render() {
     const { handleClick, overall } = this.props;
     const excellentWidth = {
