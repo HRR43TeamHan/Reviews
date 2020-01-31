@@ -33,7 +33,7 @@ class FilterRatings extends React.Component {
 
   // TODO - Need to add the ability to click the bar to set the checkbox checked.
   render() {
-    const { handleClick, overall } = this.props;
+    const { handleClick, overall, handleToggleFilter } = this.props;
     const excellentWidth = {
       width: overall.excellent.percent,
     };
@@ -57,7 +57,7 @@ class FilterRatings extends React.Component {
         <FilterTable>
 
           <FilterTableRow>
-            <Checkbox id="excellent" />
+            <Checkbox id="excellent" onChange={handleToggleFilter} name="rating" value="excellent" />
             <CheckboxLabel htmlFor="excellent">Excellent</CheckboxLabel>
             <ReviewFilterBarCell htmlFor="excellent">
               <ReviewFilterBar>
@@ -68,7 +68,7 @@ class FilterRatings extends React.Component {
           </FilterTableRow>
 
           <FilterTableRow>
-            <Checkbox id="veryGood" />
+            <Checkbox id="veryGood" onChange={handleToggleFilter} name="rating" value="veryGood" />
             <CheckboxLabel htmlFor="veryGood">Very Good</CheckboxLabel>
             <ReviewFilterBarCell>
               <ReviewFilterBar>
@@ -79,7 +79,7 @@ class FilterRatings extends React.Component {
           </FilterTableRow>
 
           <FilterTableRow>
-            <Checkbox id="average" />
+            <Checkbox id="average" onChange={handleToggleFilter} name="rating" value="average" />
             <CheckboxLabel htmlFor="average">Average</CheckboxLabel>
             <ReviewFilterBarCell>
               <ReviewFilterBar>
@@ -90,7 +90,7 @@ class FilterRatings extends React.Component {
           </FilterTableRow>
 
           <FilterTableRow>
-            <Checkbox id="poor" />
+            <Checkbox id="poor" onChange={handleToggleFilter} name="rating" value="poor" />
             <CheckboxLabel htmlFor="poor">Poor</CheckboxLabel>
             <ReviewFilterBarCell>
               <ReviewFilterBar>
@@ -101,7 +101,7 @@ class FilterRatings extends React.Component {
           </FilterTableRow>
 
           <FilterTableRow>
-            <Checkbox id="terrible" />
+            <Checkbox id="terrible" onChange={handleToggleFilter} name="rating" value="terrible" />
             <CheckboxLabel htmlFor="terrible">Terrible</CheckboxLabel>
             <ReviewFilterBarCell>
               <ReviewFilterBar>

@@ -15,7 +15,7 @@ const connection = mysql.createConnection({
   host: process.env.RDS_HOSTNAME || config.HOSTNAME,
   user: process.env.RDS_USERNAME || config.USERNAME,
   database: process.env.RDS_DATABASE || config.DATABASE,
-  password: process.env.RDS_PASSWORD || config.PASSWORD,
+  password: process.env.RDS_PASSWORD,
   port: process.env.RDS_PORT,
 });
 
@@ -24,13 +24,14 @@ const getLanguages = (callback) => {
   connection.query('SELECT * FROM Languages', (error, results) => {
     if (error) { callback(error, null); }
     // convert into JSON object for O(1) complexity
-    const data = {};
-    for (let i = 0; i < results.length; i += 1) {
-      data[results[i].ID] = results[i].title;
-    }
+    // const data = {};
+    // for (let i = 0; i < results.length; i += 1) {
+    //   data[results[i].ID] = results[i].title;
+    // }
 
-    console.log(data);
-    callback(null, data);
+    // console.log(data);
+    // callback(null, data);
+    callback(null, results);
   });
 };
 

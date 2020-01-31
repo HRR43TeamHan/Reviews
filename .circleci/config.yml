@@ -46,7 +46,7 @@ jobs:
           name: Run tests with JUnit as reporter
           command: npm test --ci --runInBand --reporters=default --reporters=jest-junit;
           environment:
-            JEST_JUNIT_OUTPUT_DIR: "reports/junit/js-test-results.xml"
+            JEST_JUNIT_OUTPUT_DIR: "reports/junit/js-test-results"
 
       - run: npm test
       - store_test_results:

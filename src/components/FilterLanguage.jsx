@@ -13,24 +13,32 @@ class FilterLanguage extends React.Component {
     super(props);
   }
 
+  // TODO - iterate through all languages
+  // TODO - render the first 4 languages
+  // TODO - and make modal
+
   render() {
-    const { handleClick } = this.props;
+    const { handleToggleFilter } = this.props;
     return (
       <LanguageCard>
         <FilterTitle>
           Language
       </FilterTitle>
-      <FilterTable>
-        <FilterTableRow>
-      <RadioButton name="language" id="all" value="all"/>
-      <RadioButtonLabel forHtml="all" >All languages</RadioButtonLabel>
-      <label>(Amount)</label>
-      </FilterTableRow>
-      <RadioButton name="language" id="next" />
-      <RadioButtonLabel forHtml="next" >TODO iterate the rest</RadioButtonLabel>
-      </FilterTable>
+        <FilterTable>
+          <FilterTableRow>
+            <RadioButton
+              id="all"
+              name="language"
+              value="allLanguages"
+            />
+            <RadioButtonLabel forHtml="all" >All languages</RadioButtonLabel>
+            <label>(Amount)</label>
+          </FilterTableRow>
+          <RadioButton name="language" id="next" />
+          <RadioButtonLabel forHtml="next" >TODO iterate the rest</RadioButtonLabel>
+        </FilterTable>
       </LanguageCard>
-    )
+    );
   }
 }
 

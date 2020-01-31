@@ -16,7 +16,7 @@ class FilterTime extends React.Component {
   }
 
   render() {
-    const { handleClick } = this.props;
+    const { handleToggleFilter } = this.props;
     return (
       <FiltersCard>
         <FilterTitle>
@@ -25,22 +25,42 @@ class FilterTime extends React.Component {
         <FilterTable>
 
           <FilterTableRow>
-            <Checkbox id="Mar-May" />
+            <Checkbox
+              id="Mar-May"
+              onChange={handleToggleFilter}
+              name="timeOfYear"
+              value="mar_may"
+            />
             <CheckboxLabel htmlFor="Mar-May">Mar-May</CheckboxLabel>
           </FilterTableRow>
 
           <FilterTableRow>
-            <Checkbox id="Jun-Aug" />
+            <Checkbox
+              id="Jun-Aug"
+              onChange={handleToggleFilter}
+              name="timeOfYear"
+              value="jun_aug"
+            />
             <CheckboxLabel htmlFor="Jun-Aug">Jun-Aug</CheckboxLabel>
           </FilterTableRow>
 
           <FilterTableRow>
-            <Checkbox id="Sep-Nov" />
+            <Checkbox
+              id="Sep-Nov"
+              onChange={handleToggleFilter}
+              name="timeOfYear"
+              value="sep-nov"
+            />
             <CheckboxLabel htmlFor="Sep-Nov">Sep-Nov</CheckboxLabel>
           </FilterTableRow>
 
           <FilterTableRow>
-            <Checkbox id="Dec-Feb" />
+            <Checkbox
+              id="Dec-Feb"
+              onChange={handleToggleFilter}
+              name="timeOfYear"
+              value="dec_feb"
+            />
             <CheckboxLabel htmlFor="Dec-Feb">Dec-Feb</CheckboxLabel>
           </FilterTableRow>
 

@@ -31,7 +31,6 @@ class App extends React.Component {
     super(props);
     this.state = {
       reviews: [],
-      reviewsfiltered: [],
       reviewsAmt: 0,
       view: 1,
       overall: {
@@ -76,6 +75,7 @@ class App extends React.Component {
           reviews: response.data,
           reviewsAmt: response.data.length,
         });
+
         return response.data;
       })
       .catch((error) => {
@@ -85,6 +85,36 @@ class App extends React.Component {
         // this is always executed
         // console.log(reviewsArray);
         this.countRatings(reviewsArray);
+        this.countLanguages(reviewsArray);
+      });
+
+
+  }
+
+  countLanguages(reviews) {
+    getLanguages()
+      .then((languages) => {
+        this.setState({
+          languages,
+        });
+        console.log(languages);
+      }).then(() => {
+        const { languages } = this.state;
+        const total = reviews.length;
+        const languageCount = {};
+        languageCount[0] = { title: 'All languages', value: total };
+        languages.forEach((language) => {
+          languageCount[language.ID] = {};
+          languageCount[language.ID].title = language.title;
+          languageCount[language.ID].value = 0;
+        });
+        reviews.forEach((review) => {
+          languageCount[review.language_ID].value += 1 || 1;
+        });
+        console.log(languageCount);
+        this.setState({
+          languageCount,
+        });
       });
   }
 
@@ -158,6 +188,7 @@ class App extends React.Component {
       overall,
       reviews,
       reviewsAmt,
+      languageCount,
     } = this.state;
     const { handleTabClick } = this.handleTabClick;
     let componentContainer;
@@ -167,6 +198,7 @@ class App extends React.Component {
           reviews={reviews}
           reviewsAmt={this.numberWithCommas(reviewsAmt)}
           overall={overall}
+          languageCount={languageCount}
         />
       );
     } else if (view === 2) {
