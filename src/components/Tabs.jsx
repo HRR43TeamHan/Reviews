@@ -1,48 +1,97 @@
 import React from 'react';
+import PropTypes from 'prop-types'; // ES6
 import {
   styles,
 } from '../css/tabsCSS.js';
 
 
-class Tabs extends React.Component {
-  constructor(props) {
-    super(props);
+const Tabs = (props) => {
+  const { reviewsAmt, handleTabClick, view } = props;
+  let tab1; let tab2; let tab3;
 
-  }
-
-  render() {
-    const { reviewsAmt } = this.props;
-    return (
-      <styles.containerDiv>
-
-        <styles.tabSelectedSpan>
-          <styles.iconSpan style={{ marginLeft: '10px' }}>
-            <i className="fa fa-pencil-square-o fa-2x" aria-hidden="true" />
-          </styles.iconSpan>
-          <styles.textSpan>{reviewsAmt}</styles.textSpan>
-          <styles.textSpan>Reviews</styles.textSpan>
-        </styles.tabSelectedSpan>
-
-        <styles.tabSpan>
-          <styles.iconSpan>
-            <i className="fas fa-comment-alt fa-2x" />
-          </styles.iconSpan>
-          <styles.textSpan>713</styles.textSpan>
-          <styles.textSpan>Q&A</styles.textSpan>
-        </styles.tabSpan>
-
-        <styles.tabSpan>
-          <styles.iconSpan>
-            <i className="fas fa-lightbulb fa-2x" />
-          </styles.iconSpan>
-          <styles.textSpan>666</styles.textSpan>
-          <styles.textSpan>Room Tips</styles.textSpan>
-        </styles.tabSpan>
-
-      </styles.containerDiv>
+  if (view === 1) {
+    tab1 = (
+      <styles.tabSelectedSpan onClick={handleTabClick} name="view" id="1">
+        <styles.iconSpan style={{ marginLeft: '10px' }} name="view" id="1">
+          <i className="fa fa-pencil-square-o fa-2x" aria-hidden="true" name="view" id="1" />
+        </styles.iconSpan>
+        <styles.textSpan name="view" id="1">{reviewsAmt}</styles.textSpan>
+        <styles.textSpan name="view" id="1">Reviews</styles.textSpan>
+      </styles.tabSelectedSpan>
+    );
+  } else {
+    tab1 = (
+      <styles.tabSpan onClick={handleTabClick} name="view" id="1">
+        <styles.iconSpan style={{ marginLeft: '10px' }} name="view" id="1">
+          <i className="fa fa-pencil-square-o fa-2x" aria-hidden="true" name="view" id="1" />
+        </styles.iconSpan>
+        <styles.textSpan name="view" id="1">{reviewsAmt}</styles.textSpan>
+        <styles.textSpan name="view" id="1">Reviews</styles.textSpan>
+      </styles.tabSpan>
     );
   }
 
-}
+  if (view === 2) {
+    tab2 = (
+      <styles.tabSelectedSpan onClick={handleTabClick} name="view" id="2">
+        <styles.iconSpan name="view" id="2">
+          <i className="fas fa-comment-alt fa-2x" name="view" id="2" />
+        </styles.iconSpan>
+        <styles.textSpan name="view" id="2">713</styles.textSpan>
+        <styles.textSpan name="view" id="2">Q&A</styles.textSpan>
+      </styles.tabSelectedSpan>
+    );
+  } else {
+    tab2 = (
+      <styles.tabSpan onClick={handleTabClick} name="view" id="2">
+        <styles.iconSpan name="view" id="2">
+          <i className="fas fa-comment-alt fa-2x" name="view" id="2" />
+        </styles.iconSpan>
+        <styles.textSpan name="view" id="2">713</styles.textSpan>
+        <styles.textSpan name="view" id="2">Q&A</styles.textSpan>
+      </styles.tabSpan>
+    );
+  }
+
+  if (view === 3) {
+    tab3 = (
+      <styles.tabSelectedSpan onClick={handleTabClick} name="view" id="3">
+        <styles.iconSpan name="view" id="3">
+          <i className="fas fa-lightbulb fa-2x" name="view" id="3" />
+        </styles.iconSpan>
+        <styles.textSpan name="view" id="3">666</styles.textSpan>
+        <styles.textSpan name="view" id="3">Room Tips</styles.textSpan>
+      </styles.tabSelectedSpan>
+    );
+  } else {
+    tab3 = (
+      <styles.tabSpan onClick={handleTabClick} name="view" id="3">
+        <styles.iconSpan name="view" id="3">
+          <i className="fas fa-lightbulb fa-2x" name="view" id="3" />
+        </styles.iconSpan>
+        <styles.textSpan name="view" id="3">666</styles.textSpan>
+        <styles.textSpan name="view" id="3">Room Tips</styles.textSpan>
+      </styles.tabSpan>
+    );
+  }
+
+  return (
+    <styles.containerDiv>
+
+      {tab1}
+
+      {tab2}
+
+      {tab3}
+
+    </styles.containerDiv>
+  );
+};
+
+Tabs.propTypes = {
+  reviewsAmt: PropTypes.string.isRequired,
+  view: PropTypes.number.isRequired,
+  handleTabClick: PropTypes.func.isRequired,
+};
 
 export default Tabs;

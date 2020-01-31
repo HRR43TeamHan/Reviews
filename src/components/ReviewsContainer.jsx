@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types'; // ES6
+
 import { Global } from '@emotion/core';
 import {
   styles,
@@ -9,7 +11,6 @@ import ReviewsList from './ReviewsList.jsx';
 class ReviewsContainer extends React.Component {
   constructor(props) {
     super(props);
-    const { reviews } = this.props;
     this.state = {
       filters: {
         rating_overall: {
@@ -23,16 +24,14 @@ class ReviewsContainer extends React.Component {
         travel_type: {},
         language_ID: {},
       },
-      filteredReviews: reviews,
+      filteredOnce: false,
+      filteredReviews: [],
+      page: 1,
     };
     this.handleToggleFilter = this.handleToggleFilter.bind(this);
   }
 
   componentDidMount() {
-    const { reviews } = this.props;
-    this.setState({
-      filteredReviews: reviews,
-    });
   }
 
   filterReviews(filtersObj) {
@@ -52,7 +51,6 @@ class ReviewsContainer extends React.Component {
           }
         } else if (key === 'language_ID') {
           filters[key][0] = filtersObj[key][title].id;
-
         } else if (key === 'travel_date' && filtersObj[key][title].value === true) {
           if (filtersObj[key][title].id === 1) {
             // Mar - May
@@ -104,6 +102,7 @@ class ReviewsContainer extends React.Component {
     // Set the filteredReviews state
     this.setState({
       filteredReviews,
+      filteredOnce: true,
     });
   }
 
@@ -121,6 +120,7 @@ class ReviewsContainer extends React.Component {
     console.log(currentFilters);
     this.setState({
       filters: currentFilters,
+      page: 1,
     });
     // after we toggle the filter we need to filter the results
     // using the currentState variable will speed up the function reducing the
@@ -134,13 +134,24 @@ class ReviewsContainer extends React.Component {
       reviewsAmt,
       reviews,
       overall,
-
     } = this.props;
     const { handleToggleFilter } = this;
-    const { filteredReviews } = this.state;
-
+    const { page, filteredReviews, filteredOnce } = this.state;
+    let currentReviews;
+    if (!filteredOnce) {
+      currentReviews = reviews;
+    } else {
+      currentReviews = filteredReviews;
+    }
+    // TODO - consider using splice vs filter for pagination...perhaps less complexity
+    const paginatedReviews = currentReviews.filter((review, index) => {
+      if (index < page * 10 && index / 10 < page) return true;
+      return false;
+    });
+    console.log('paginate: ', paginatedReviews);
+    console.log('page: ', page);
+    console.log('paginated: ', paginatedReviews);
     return (
-
       <div>
 
         <Global styles={styles.global} />
@@ -170,13 +181,34 @@ class ReviewsContainer extends React.Component {
             languageCount={languageCount}
             handleToggleFilter={handleToggleFilter}
           />
-          <ReviewsList filteredReviews={filteredReviews} />
-
+          <ReviewsList paginatedReviews={paginatedReviews} page={page} />
+          <div>ReviewsContatiner.jsx - Pagination Component Goes HERE!!</div>
+          <div>if (page == 1) = 1 2 3 4 5 6 ...####</div>
+          <div>if (page >= 5) = 1... N-2 N-1 N N+1 N+2 ...####</div>
+          <div>if (page === last) = 1... N-5 N-4 N-3 N-2 N-1 ####</div>
         </div>
       </div>
 
     );
   }
 }
+
+ReviewsContainer.defaultProps = {
+  languageCount: undefined,
+};
+
+ReviewsContainer.propTypes = {
+  languageCount: PropTypes.shape(
+    { 0: PropTypes.shape({ title: PropTypes.string, value: PropTypes.number }) },
+  ),
+  reviewsAmt: PropTypes.string.isRequired,
+  reviews: PropTypes.arrayOf(PropTypes.object).isRequired,
+  overall: PropTypes.shape(
+    {
+      firstFormat: PropTypes.shape({ amt: PropTypes.string, percent: PropTypes.string }),
+      secondFormat: PropTypes.shape({ amt: PropTypes.number, percent: PropTypes.number }),
+    },
+  ).isRequired,
+};
 
 export default ReviewsContainer;

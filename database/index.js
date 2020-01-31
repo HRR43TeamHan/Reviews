@@ -38,6 +38,7 @@ const getLanguages = (callback) => {
 const getReviews = (locationID, callback) => {
   // Here we return the list of Reviews based on the current Location
   connection.query(`SELECT
+  Reviews.ID,
   Reviews.title,
   Users.username,
   Reviews.user_thoughts,
@@ -56,7 +57,7 @@ const getReviews = (locationID, callback) => {
   FROM ((Reviews
   INNER JOIN Locations ON Reviews.user_location_ID = Locations.ID)
   INNER JOIN Users ON Reviews.user_ID = Users.ID)
-  WHERE Reviews.location_ID=${locationID}`, (error, results) => {
+  WHERE Reviews.location_ID=${locationID} ORDER BY Reviews.travel_date DESC`, (error, results) => {
     if (error) { callback(error, null); }
     callback(null, results);
   });

@@ -172,10 +172,13 @@ class App extends React.Component {
 
 
   handleTabClick(event) {
-    const { target } = event.target;
-    const { name, value } = target;
+    const { target } = event;
+    console.log(target);
+    const { name, id } = target;
+    const numValue = parseInt(id, 10);
+    console.log('numValue: ', id);
     this.setState({
-      [name]: value,
+      view: numValue,
     });
     console.log(event.target);
   }
@@ -188,7 +191,7 @@ class App extends React.Component {
       reviewsAmt,
       languageCount,
     } = this.state;
-    const { handleTabClick } = this.handleTabClick;
+    const { handleTabClick } = this;
     let componentContainer;
     if (view === 1) {
       componentContainer = (
@@ -209,7 +212,7 @@ class App extends React.Component {
       );
     }
     //------------------------------------------------------------
-    // Begin the rendering what is below here
+    // Begin the rendering of what is below here
     //------------------------------------------------------------
     return (
 
