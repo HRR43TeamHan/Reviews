@@ -87,8 +87,6 @@ class App extends React.Component {
         this.countRatings(reviewsArray);
         this.countLanguages(reviewsArray);
       });
-
-
   }
 
   countLanguages(reviews) {

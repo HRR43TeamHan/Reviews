@@ -26,9 +26,9 @@ class FilterTime extends React.Component {
 
           <FilterTableRow>
             <Checkbox
-              id="Mar-May"
+              id="1"
               onChange={handleToggleFilter}
-              name="timeOfYear"
+              name="travel_date"
               value="mar_may"
             />
             <CheckboxLabel htmlFor="Mar-May">Mar-May</CheckboxLabel>
@@ -36,9 +36,9 @@ class FilterTime extends React.Component {
 
           <FilterTableRow>
             <Checkbox
-              id="Jun-Aug"
+              id="2"
               onChange={handleToggleFilter}
-              name="timeOfYear"
+              name="travel_date"
               value="jun_aug"
             />
             <CheckboxLabel htmlFor="Jun-Aug">Jun-Aug</CheckboxLabel>
@@ -46,19 +46,19 @@ class FilterTime extends React.Component {
 
           <FilterTableRow>
             <Checkbox
-              id="Sep-Nov"
+              id="3"
               onChange={handleToggleFilter}
-              name="timeOfYear"
-              value="sep-nov"
+              name="travel_date"
+              value="sep_nov"
             />
             <CheckboxLabel htmlFor="Sep-Nov">Sep-Nov</CheckboxLabel>
           </FilterTableRow>
 
           <FilterTableRow>
             <Checkbox
-              id="Dec-Feb"
+              id="4"
               onChange={handleToggleFilter}
-              name="timeOfYear"
+              name="travel_date"
               value="dec_feb"
             />
             <CheckboxLabel htmlFor="Dec-Feb">Dec-Feb</CheckboxLabel>

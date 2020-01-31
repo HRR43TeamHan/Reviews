@@ -15,15 +15,7 @@ import {
 class FilterRatings extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      filter: {
-        Excellent: false,
-        VeryGood: false,
-        Average: false,
-        Poor: false,
-        Terrible: false,
-      },
-    };
+
   }
 
   // padding-left: 5px;
@@ -57,7 +49,11 @@ class FilterRatings extends React.Component {
         <FilterTable>
 
           <FilterTableRow>
-            <Checkbox id="excellent" onChange={handleToggleFilter} name="rating" value="excellent" />
+            <Checkbox id="5"
+              name="rating_overall"
+              value="excellent"
+              onChange={handleToggleFilter}
+            />
             <CheckboxLabel htmlFor="excellent">Excellent</CheckboxLabel>
             <ReviewFilterBarCell htmlFor="excellent">
               <ReviewFilterBar>
@@ -68,7 +64,12 @@ class FilterRatings extends React.Component {
           </FilterTableRow>
 
           <FilterTableRow>
-            <Checkbox id="veryGood" onChange={handleToggleFilter} name="rating" value="veryGood" />
+            <Checkbox
+              id="4"
+              onChange={handleToggleFilter}
+              name="rating_overall"
+              value="veryGood"
+            />
             <CheckboxLabel htmlFor="veryGood">Very Good</CheckboxLabel>
             <ReviewFilterBarCell>
               <ReviewFilterBar>
@@ -79,7 +80,12 @@ class FilterRatings extends React.Component {
           </FilterTableRow>
 
           <FilterTableRow>
-            <Checkbox id="average" onChange={handleToggleFilter} name="rating" value="average" />
+            <Checkbox
+              id="3"
+              name="rating_overall"
+              value="average"
+              onChange={handleToggleFilter}
+            />
             <CheckboxLabel htmlFor="average">Average</CheckboxLabel>
             <ReviewFilterBarCell>
               <ReviewFilterBar>
@@ -90,7 +96,12 @@ class FilterRatings extends React.Component {
           </FilterTableRow>
 
           <FilterTableRow>
-            <Checkbox id="poor" onChange={handleToggleFilter} name="rating" value="poor" />
+            <Checkbox
+              id="2"
+              name="rating_overall"
+              value="poor"
+              onChange={handleToggleFilter}
+            />
             <CheckboxLabel htmlFor="poor">Poor</CheckboxLabel>
             <ReviewFilterBarCell>
               <ReviewFilterBar>
@@ -101,7 +112,12 @@ class FilterRatings extends React.Component {
           </FilterTableRow>
 
           <FilterTableRow>
-            <Checkbox id="terrible" onChange={handleToggleFilter} name="rating" value="terrible" />
+            <Checkbox
+              id="1"
+              name="rating_overall"
+              value="terrible"
+              onChange={handleToggleFilter}
+            />
             <CheckboxLabel htmlFor="terrible">Terrible</CheckboxLabel>
             <ReviewFilterBarCell>
               <ReviewFilterBar>

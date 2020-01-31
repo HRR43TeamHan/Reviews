@@ -11,18 +11,17 @@ class ReviewsContainer extends React.Component {
     super(props);
     this.state = {
       filters: {
-        rating: {
-          excellent: false,
-          veryGood: false,
-          average: false,
-          poor: false,
-          terrible: false,
+        rating_overall: {
+          excellent: { id: 5, value: false },
+          veryGood: { id: 4, value: false },
+          average: { id: 3, value: false },
+          poor: { id: 2, value: false },
+          terrible: { id: 1, value: false },
         },
-        timeOfYear: {},
-        travelerType: {},
-        language: {},
+        travel_date: {},
+        travel_type: {},
+        language_ID: {},
       },
-      filteredReviews: [],
     };
     this.handleToggleFilter = this.handleToggleFilter.bind(this);
   }
@@ -34,25 +33,57 @@ class ReviewsContainer extends React.Component {
     });
   }
 
-  filterReviews() {
-    const { filteredReviews } = this.state;
+  filterReviews(filtersObj) {
     const { reviews } = this.props;
-    filteredReviews = reviews;
-    console.log(event.target);
+    var filteredReviews = reviews;
+    // foreach the keys and apply the filter
+    const filters = {};
+    Object.keys(filtersObj).forEach((key) => {
+
+      filters[key] = [];
+      Object.keys(filtersObj[key]).forEach((title) => {
+        if (filtersObj[key][title].value === true) {
+          filters[key].push(filtersObj[key][title].id);
+        }
+      });
+    });
+    filteredReviews = filteredReviews.filter((review) => {
+      const filterType = filters.travel_type.includes(review.travel_type) || filters.travel_type.length === 0;
+
+      const filterRating = filters.rating_overall.includes(review.rating_overall) || filters.rating_overall.length === 0;
+      if (filterRating && filterType) {
+        return true;
+      }
+      return false;
+
+    });
+    console.log('filters: ', filters);
+    console.log(filteredReviews);
+    // Set the filteredReviews state
+    this.setState({
+      filteredReviews,
+    });
   }
 
   handleToggleFilter(event) {
     const { target } = event;
     console.log(target);
-    const { name, value } = target;
-    console.log(name, value);
+    const { name, value, id } = target;
+    console.log(name, value, id);
     const { filters } = this.state;
-    const currentState = { ...filters };
-    currentState[name][value] = !currentState[name][value];
-    console.log(currentState);
+    const currentFilters = { ...filters };
+    // id for DOM element is in string so we make it a number for easing filtering function
+    currentFilters[name][value] = currentFilters[name][value] || {};
+    currentFilters[name][value].id = Number(id);
+    currentFilters[name][value].value = !currentFilters[name][value].value;
+    console.log(currentFilters);
     this.setState({
-      filters: currentState,
+      filters: currentFilters,
     });
+    // after we toggle the filter we need to filter the results
+    // using the currentState variable will speed up the function reducing the
+    // requirement for the state to be set first
+    this.filterReviews(currentFilters);
   }
 
   render() {

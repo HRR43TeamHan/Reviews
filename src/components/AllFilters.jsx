@@ -26,18 +26,25 @@ class AllFilters extends React.Component {
             overall={overall}
             handleToggleFilter={handleToggleFilter}
           />
-          <FilterTime handleToggleFilter={handleToggleFilter} />
-          <FilterTravelerType handleToggleFilter={handleToggleFilter} />
-          <FilterLanguage handleToggleFilter={handleToggleFilter} />
+          <FilterTime
+            handleToggleFilter={handleToggleFilter}
+          />
+          <FilterTravelerType
+            handleToggleFilter={handleToggleFilter}
+          />
+          <FilterLanguage
+            handleToggleFilter={handleToggleFilter}
+          />
         </FiltersContainer>
         <FiltersContainer>
-          <FilterPopularMentions handleToggleFilter={handleToggleFilter} />
+          <FilterPopularMentions
+            handleToggleFilter={handleToggleFilter}
+          />
         </FiltersContainer>
         <Search />
       </div>
     );
   }
-
 }
 
 export default AllFilters;
