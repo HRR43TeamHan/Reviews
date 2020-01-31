@@ -12,8 +12,11 @@ class ReviewsItem extends React.Component {
   }
 
   render() {
+    const { review } = this.props;
     return (
-      <div>Search Bar goes here!</div>
+      <div>
+        <div>Replace with actual Items</div>
+      </div>
     )
   }
 

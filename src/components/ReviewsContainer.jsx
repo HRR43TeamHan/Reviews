@@ -9,6 +9,7 @@ import ReviewsList from './ReviewsList.jsx';
 class ReviewsContainer extends React.Component {
   constructor(props) {
     super(props);
+    const { reviews } = this.props;
     this.state = {
       filters: {
         rating_overall: {
@@ -22,6 +23,7 @@ class ReviewsContainer extends React.Component {
         travel_type: {},
         language_ID: {},
       },
+      filteredReviews: reviews,
     };
     this.handleToggleFilter = this.handleToggleFilter.bind(this);
   }
@@ -35,27 +37,67 @@ class ReviewsContainer extends React.Component {
 
   filterReviews(filtersObj) {
     const { reviews } = this.props;
-    var filteredReviews = reviews;
+    let filteredReviews = reviews;
     // foreach the keys and apply the filter
     const filters = {};
     Object.keys(filtersObj).forEach((key) => {
-
       filters[key] = [];
       Object.keys(filtersObj[key]).forEach((title) => {
-        if (filtersObj[key][title].value === true) {
-          filters[key].push(filtersObj[key][title].id);
+        if (
+          key === 'rating_overall'
+          || key === 'travel_type'
+        ) {
+          if (filtersObj[key][title].value === true) {
+            filters[key].push(filtersObj[key][title].id);
+          }
+        } else if (key === 'language_ID') {
+          filters[key][0] = filtersObj[key][title].id;
+
+        } else if (key === 'travel_date' && filtersObj[key][title].value === true) {
+          if (filtersObj[key][title].id === 1) {
+            // Mar - May
+            filters[key].push(3); // March
+            filters[key].push(4); // April
+            filters[key].push(5); // May
+          } else if (filtersObj[key][title].id === 2) {
+            // Jun - Aug
+            filters[key].push(6); // June
+            filters[key].push(7); // July
+            filters[key].push(8); // August
+          } else if (filtersObj[key][title].id === 3) {
+            // Sep - Nov
+            filters[key].push(9); // September
+            filters[key].push(10); // October
+            filters[key].push(11); // November
+          } else if (filtersObj[key][title].id === 4) {
+            // Dec - Feb
+            filters[key].push(12); // December
+            filters[key].push(1); // January
+            filters[key].push(2); // February
+          }
         }
       });
     });
     filteredReviews = filteredReviews.filter((review) => {
-      const filterType = filters.travel_type.includes(review.travel_type) || filters.travel_type.length === 0;
+      // TODO fix the months filter
+      const filterRating = filters.rating_overall.includes(review.rating_overall)
+        || filters.rating_overall.length === 0;
 
-      const filterRating = filters.rating_overall.includes(review.rating_overall) || filters.rating_overall.length === 0;
-      if (filterRating && filterType) {
+      const filterDate = filters.travel_date.includes((
+        new Date(review.travel_date)).getMonth() + 1)
+        || filters.travel_date.length === 0;
+
+      const filterType = filters.travel_type.includes(review.travel_type)
+        || filters.travel_type.length === 0;
+
+      // const filterLanguage = filters.language_ID === review.language_ID
+      // || filters.language_ID === 0;
+      const filterLanguage = true;
+
+      if (filterRating && filterType && filterLanguage && filterDate) {
         return true;
       }
       return false;
-
     });
     console.log('filters: ', filters);
     console.log(filteredReviews);
