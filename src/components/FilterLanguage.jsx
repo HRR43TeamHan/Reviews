@@ -18,7 +18,10 @@ class FilterLanguage extends React.Component {
   // TODO - and make modal
 
   render() {
-    const { handleToggleFilter } = this.props;
+    const { handleToggleFilter, languageCount} = this.props;
+    console.log('languageCount: ', languageCount);
+    const language = languageCount || {0:{title:"", value:0}, 1:{title:"", value:0}, 2:{title:"", value:0},}
+
     return (
       <LanguageCard>
         <FilterTitle>
@@ -27,12 +30,30 @@ class FilterLanguage extends React.Component {
         <FilterTable>
           <FilterTableRow>
             <RadioButton
-              id="all"
-              name="language"
-              value="allLanguages"
+              id="0"
+              name="language_ID"
+              value="0"
             />
             <RadioButtonLabel forHtml="all" >All languages</RadioButtonLabel>
-            <label>(Amount)</label>
+            <label>({language[0].value})</label>
+          </FilterTableRow>
+          <FilterTableRow>
+            <RadioButton
+              id="0"
+              name="language_ID"
+              value="0"
+            />
+            <RadioButtonLabel forHtml="all" >{language[1].title}</RadioButtonLabel>
+            <label>({language[1].value})</label>
+          </FilterTableRow>
+          <FilterTableRow>
+            <RadioButton
+              id="0"
+              name="language_ID"
+              value="0"
+            />
+            <RadioButtonLabel forHtml="all" >{language[2].title}</RadioButtonLabel>
+            <label>({language[2].value})</label>
           </FilterTableRow>
           <RadioButton name="language" id="next" />
           <RadioButtonLabel forHtml="next" >TODO iterate the rest</RadioButtonLabel>

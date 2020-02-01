@@ -41,6 +41,9 @@ const getReviews = (locationID, callback) => {
   Reviews.ID,
   Reviews.title,
   Users.username,
+  Users.contributions,
+  Users.votes,
+  Users.photoUrl,
   Reviews.user_thoughts,
   Reviews.user_tips,
   Reviews.description,
@@ -52,6 +55,8 @@ const getReviews = (locationID, callback) => {
   Reviews.rating_location,
   Reviews.rating_rooms,
   Reviews.rating_service,
+  Reviews.rating_clean,
+  Reviews.rating_sleep,
   Locations.location,
   Reviews.photos
   FROM ((Reviews

@@ -3,19 +3,13 @@ import PropTypes from 'prop-types'; // ES6
 import {
   FullCircles,
   EmptyCircles,
+  AdditionalRatingInner,
+  AdditionalRatingLabel,
 } from '../css/reviewsCSS.js';
-// perhaps use svg here....
-
-// const Foo = function(props, context) {
-//   const {
-//     location
-//   } = context.router;
-
-//   return <div>{props.foo}</div>;
-// };◉
 
 const RatingCircles = (props) => {
-  const { rating } = props;
+  const { rating, label } = props;
+  if (rating === 0) return null;
   let circlesfull = '';
   let circlesempty = '';
   const max = 5;
@@ -29,16 +23,32 @@ const RatingCircles = (props) => {
       total += 1;
     }
   }
+  if (label) {
+    return (
+      <AdditionalRatingInner>
+        <span styles={{ display: 'inline-flex' }}>
+          <FullCircles>{circlesfull}</FullCircles>
+          <EmptyCircles>{circlesempty}</EmptyCircles>
+        </span>
+        <AdditionalRatingLabel>{` ${label}`}</AdditionalRatingLabel>
+      </AdditionalRatingInner>
+    );
+  }
   return (
-    <div styles={{ display: 'inline-flex' }}>
+    <span styles={{ display: 'inline-flex' }}>
       <FullCircles>{circlesfull}</FullCircles>
       <EmptyCircles>{circlesempty}</EmptyCircles>
-    </div>
+    </span>
   );
+};
+
+RatingCircles.defaultProps = {
+  label: '',
 };
 
 RatingCircles.propTypes = {
   rating: PropTypes.number.isRequired,
+  label: PropTypes.string,
 };
 
 export default RatingCircles;

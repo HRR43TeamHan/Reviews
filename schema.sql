@@ -14,7 +14,10 @@ CREATE TABLE Languages (
 
 CREATE TABLE Users (
   ID INTEGER NOT NULL AUTO_INCREMENT,
+  photoUrl VARCHAR(100),
   username VARCHAR(24),
+  contributions INTEGER NOT NULL DEFAULT 0,
+  votes INTEGER NOT NULL DEFAULT 0,
   `password` VARCHAR(255),
   `created-at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   UNIQUE (username),
@@ -43,6 +46,8 @@ CREATE TABLE Reviews (
   rating_location TINYINT(1) DEFAULT 0,
   rating_rooms TINYINT(1) DEFAULT 0,
   rating_service TINYINT(1) DEFAULT 0,
+  rating_clean TINYINT(1) DEFAULT 0,
+  rating_sleep TINYINT(1) DEFAULT 0,
   user_thoughts TEXT NULL,
   user_tips TEXT NULL,
   photos VARCHAR(255) NULL,
@@ -53,7 +58,13 @@ CREATE TABLE Reviews (
   PRIMARY KEY (ID)
 );
 
-
+CREATE TABLE LocationPhotos (
+  ID INTEGER NOT NULL AUTO_INCREMENT,
+  location_ID INTEGER NOT NULL,
+  url VARCHAR(200) NOT NULL,
+  FOREIGN KEY (location_ID) REFERENCES Locations(ID),
+  PRIMARY KEY (ID)
+);
 
 
 INSERT INTO Locations (location) VALUES

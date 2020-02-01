@@ -16,7 +16,7 @@ class AllFilters extends React.Component {
   }
 
   render() {
-    const { handleClick, overall, handleToggleFilter } = this.props;
+    const { handleClick, overall, handleToggleFilter, languageCount } = this.props;
 
 
     return (
@@ -34,6 +34,7 @@ class AllFilters extends React.Component {
           />
           <FilterLanguage
             handleToggleFilter={handleToggleFilter}
+            languageCount={languageCount}
           />
         </FiltersContainer>
         <FiltersContainer>

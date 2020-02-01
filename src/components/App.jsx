@@ -119,26 +119,11 @@ class App extends React.Component {
   countRatings(reviews) {
     const total = reviews.length;
     const overall = {
-      excellent: {
-        amt: 0,
-        percent: 0,
-      },
-      veryGood: {
-        amt: 0,
-        percent: 0,
-      },
-      average: {
-        amt: 0,
-        percent: 0,
-      },
-      poor: {
-        amt: 0,
-        percent: 0,
-      },
-      terrible: {
-        amt: 0,
-        percent: 0,
-      },
+      excellent: { amt: 0, percent: 0 },
+      veryGood: { amt: 0, percent: 0 },
+      average: { amt: 0, percent: 0 },
+      poor: { amt: 0, percent: 0 },
+      terrible: { amt: 0, percent: 0 },
     };
     // console.log(Object.keys(overall));
     reviews.forEach((review) => {
@@ -173,14 +158,11 @@ class App extends React.Component {
 
   handleTabClick(event) {
     const { target } = event;
-    console.log(target);
-    const { name, id } = target;
+    const { id } = target;
     const numValue = parseInt(id, 10);
-    console.log('numValue: ', id);
     this.setState({
       view: numValue,
     });
-    console.log(event.target);
   }
 
   render() {

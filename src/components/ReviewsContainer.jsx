@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types'; // ES6
-
 import { Global } from '@emotion/core';
 import {
   styles,
 } from '../css/tabsCSS.js';
 import AllFilters from './AllFilters.jsx';
 import ReviewsList from './ReviewsList.jsx';
+import Paginator from './Paginator.jsx';
 
 class ReviewsContainer extends React.Component {
   constructor(props) {
@@ -32,6 +32,14 @@ class ReviewsContainer extends React.Component {
   }
 
   componentDidMount() {
+  }
+
+  setPage(event) {
+    const { target } = event;
+    const { id } = target;
+    this.setState({
+      page: Number.parseInt(id, 10),
+    });
   }
 
   filterReviews(filtersObj) {
@@ -97,8 +105,6 @@ class ReviewsContainer extends React.Component {
       }
       return false;
     });
-    console.log('filters: ', filters);
-    console.log(filteredReviews);
     // Set the filteredReviews state
     this.setState({
       filteredReviews,
@@ -108,9 +114,7 @@ class ReviewsContainer extends React.Component {
 
   handleToggleFilter(event) {
     const { target } = event;
-    console.log(target);
     const { name, value, id } = target;
-    console.log(name, value, id);
     const { filters } = this.state;
     const currentFilters = { ...filters };
     // id for DOM element is in string so we make it a number for easing filtering function
@@ -148,9 +152,9 @@ class ReviewsContainer extends React.Component {
       if (index < page * 10 && index / 10 < page) return true;
       return false;
     });
-    console.log('paginate: ', paginatedReviews);
-    console.log('page: ', page);
-    console.log('paginated: ', paginatedReviews);
+    // console.log('paginate: ', paginatedReviews);
+    // console.log('page: ', page);
+    // console.log('paginated: ', paginatedReviews);
     return (
       <div>
 
@@ -182,10 +186,7 @@ class ReviewsContainer extends React.Component {
             handleToggleFilter={handleToggleFilter}
           />
           <ReviewsList paginatedReviews={paginatedReviews} page={page} />
-          <div>ReviewsContatiner.jsx - Pagination Component Goes HERE!!</div>
-          <div>if (page == 1) = 1 2 3 4 5 6 ...####</div>
-          <div>if (page >= 5) = 1... N-2 N-1 N N+1 N+2 ...####</div>
-          <div>if (page === last) = 1... N-5 N-4 N-3 N-2 N-1 ####</div>
+          <Paginator page={page} reviewsAmt={reviewsAmt} />
         </div>
       </div>
 

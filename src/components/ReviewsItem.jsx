@@ -5,12 +5,21 @@ import {
   ReviewsItemCard,
   UserHeader,
   UserInfoContainer,
+  UserInfoPopUpButton,
+  UserInfoPopUp,
   UserInfoBottom,
   UserInfoTop,
   UserName,
   UserPhotoContainer,
   UserPhoto,
   ReviewTitle,
+  ReviewContainer,
+  Description,
+  AdditionalRatings,
+  AdditionalRatingInner,
+  AdditionalRatingLabel,
+  DisclaimerFoot,
+  SocialBar,
 } from '../css/reviewsCSS.js';
 import RatingCircles from './RatingCircles.jsx';
 
@@ -19,26 +28,52 @@ class ReviewsItem extends React.Component {
     super(props);
     this.state = {
       expanded: false,
+      userInfoPop: false,
     };
+    this.handlePopUp = this.handlePopUp.bind(this);
+  }
+
+  handlePopUp() {
+    const { userInfoPop } = this.state;
+    const toggled = !userInfoPop;
+    this.setState({
+      userInfoPop: toggled,
+    });
   }
 
   render() {
     const { review } = this.props;
-    const { expanded } = this.state;
+    const { expanded, userInfoPop } = this.state;
+    const { handlePopUp } = this;
     // Set month date accordingly
-    const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+    const monthNamesLong = ['January', 'February', 'March', 'April', 'May', 'June',
       'July', 'August', 'September', 'October', 'November', 'December',
     ];
+
+    const monthNamesShort = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+      'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',
+    ];
+
     const travelDate = new Date(review.travel_date);
-    const date = `${monthNames[travelDate.getMonth()]} ${travelDate.getFullYear()}`;
-    const contributions = Math.round((Math.random() * 400));
-    const helpful = Math.round(Math.random() * 100);
+    const date = `${monthNamesLong[travelDate.getMonth()]} ${travelDate.getFullYear()}`;
+
+    let userInfoPopUp;
+    if (userInfoPop) {
+      userInfoPopUp = <UserInfoPopUp><li>Report</li><li>Follow</li></UserInfoPopUp>;
+    } else {
+      userInfoPopUp = undefined;
+    }
     return (
       <ReviewsItemCard>
         <UserHeader>
-          <UserPhotoContainer>PH</UserPhotoContainer>
+          <UserPhotoContainer>
+            <UserPhoto style={{ backgroundImage: `url(${review.photoUrl})` }} />
+          </UserPhotoContainer>
           <UserInfoContainer>
-
+            <UserInfoPopUpButton onClick={handlePopUp}>
+              <i className="fas fa-ellipsis-h" />
+              {userInfoPopUp}
+            </UserInfoPopUpButton>
             <UserInfoTop>
               <UserName>{review.username}</UserName>
               {' wrote a review '}
@@ -49,45 +84,51 @@ class ReviewsItem extends React.Component {
               {' '}
               {review.location}
               {' • '}
-              {contributions}
+              {review.contributions}
               {' contributions • '}
-              {helpful}
+              {review.votes}
               {' helpful votes'}
             </UserInfoBottom>
+
           </UserInfoContainer>
         </UserHeader>
         <RatingContainer>
           <RatingCircles rating={review.rating_overall} />
         </RatingContainer>
+        <ReviewContainer>
+          <ReviewTitle>
+            {review.title}
+          </ReviewTitle>
 
-        <ReviewTitle>
-          {review.title}
-        </ReviewTitle>
-        <div>
-          Description=
-          {' '}
-          {review.description}
-        </div>
-        <div>
-          rating_expenses=
-          {' '}
-          {review.rating_expenses}
-        </div>
-        <div>
-          rating_location=
-          {' '}
-          {review.rating_location}
-        </div>
-        <div>
-          rating_rooms=
-          {' '}
-          {review.rating_rooms}
-        </div>
-        <div>
-          Date of stay:
-          {' '}
-          {date}
-        </div>
+          <Description>{review.description}</Description>
+
+          <div>
+            Date of stay:
+            {` ${date}`}
+          </div>
+          <AdditionalRatings>
+
+            <RatingCircles rating={review.rating_expenses} label="Value" />
+
+            <RatingCircles rating={review.rating_location} label="Location" />
+
+            <RatingCircles rating={review.rating_rooms} label="Room" />
+
+            <RatingCircles rating={review.rating_service} label="Service" />
+
+            <RatingCircles rating={review.rating_sleep} label="Sleep" />
+
+            <RatingCircles rating={review.rating_clean} label="Cleanliness" />
+
+          </AdditionalRatings>
+          <DisclaimerFoot>
+            Disclaimer that nobody reads and the views expressed above
+             are the representation of a seeder algorithm.
+          </DisclaimerFoot>
+        </ReviewContainer>
+        <SocialBar>
+          SocalBar Here
+        </SocialBar>
       </ReviewsItemCard>
 
     );
@@ -110,6 +151,10 @@ ReviewsItem.propTypes = {
       rating_location: PropTypes.number.isRequired,
       rating_rooms: PropTypes.number.isRequired,
       rating_service: PropTypes.number.isRequired,
+      rating_sleep: PropTypes.number.isRequired,
+      rating_clean: PropTypes.number.isRequired,
+      contributions: PropTypes.number.isRequired,
+      votes: PropTypes.number.isRequired,
       location: PropTypes.string.isRequired,
       photos: null,
     },
