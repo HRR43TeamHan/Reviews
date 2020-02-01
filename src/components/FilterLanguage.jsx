@@ -39,24 +39,19 @@ class FilterLanguage extends React.Component {
           </FilterTableRow>
           <FilterTableRow>
             <RadioButton
-              id="0"
+              id="1"
               name="language_ID"
-              value="0"
+              value="1"
             />
             <RadioButtonLabel forHtml="all" >{language[1].title}</RadioButtonLabel>
-            <label>({language[1].value})</label>
+            <span>({language[1].value})</span>
           </FilterTableRow>
           <FilterTableRow>
-            <RadioButton
-              id="0"
-              name="language_ID"
-              value="0"
-            />
-            <RadioButtonLabel forHtml="all" >{language[2].title}</RadioButtonLabel>
-            <label>({language[2].value})</label>
+            TODO MORE Modal
           </FilterTableRow>
-          <RadioButton name="language" id="next" />
-          <RadioButtonLabel forHtml="next" >TODO iterate the rest</RadioButtonLabel>
+
+
+
         </FilterTable>
       </LanguageCard>
     );

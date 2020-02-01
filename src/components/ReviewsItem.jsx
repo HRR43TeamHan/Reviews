@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types'; // ES6
+import Photos from './Photos.jsx';
+import RatingCircles from './RatingCircles.jsx';
 import {
   RatingContainer,
   ReviewsItemCard,
@@ -21,7 +23,6 @@ import {
   DisclaimerFoot,
   SocialBar,
 } from '../css/reviewsCSS.js';
-import RatingCircles from './RatingCircles.jsx';
 
 class ReviewsItem extends React.Component {
   constructor(props) {
@@ -47,21 +48,35 @@ class ReviewsItem extends React.Component {
     const { handlePopUp } = this;
     // Set month date accordingly
     const monthNamesLong = ['January', 'February', 'March', 'April', 'May', 'June',
-      'July', 'August', 'September', 'October', 'November', 'December',
-    ];
+      'July', 'August', 'September', 'October', 'November', 'December'];
 
     const monthNamesShort = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-      'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',
-    ];
+      'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
-    const travelDate = new Date(review.travel_date);
-    const date = `${monthNamesLong[travelDate.getMonth()]} ${travelDate.getFullYear()}`;
-
+    let travelDate = new Date(review.travel_date);
+    travelDate = `${monthNamesLong[travelDate.getMonth()]} ${travelDate.getFullYear()}`;
+    let reviewDate = new Date(review.review_date);
+    reviewDate = `${monthNamesShort[reviewDate.getMonth()]} ${reviewDate.getDate()}`;
     let userInfoPopUp;
     if (userInfoPop) {
-      userInfoPopUp = <UserInfoPopUp><li>Report</li><li>Follow</li></UserInfoPopUp>;
+      userInfoPopUp = (
+        <UserInfoPopUp>
+          <li>Report</li>
+          <li>Follow</li>
+        </UserInfoPopUp>
+      );
     } else {
-      userInfoPopUp = undefined;
+      userInfoPopUp = null;
+    }
+    let description;
+    if (expanded) {
+      description = <Description>TODO - make expanded version</Description>;
+    } else {
+      description = (
+        <Description>
+          <span>{review.description}</span>
+        </Description>
+      );
     }
     return (
       <ReviewsItemCard>
@@ -77,7 +92,7 @@ class ReviewsItem extends React.Component {
             <UserInfoTop>
               <UserName>{review.username}</UserName>
               {' wrote a review '}
-              {date}
+              {reviewDate}
             </UserInfoTop>
             <UserInfoBottom>
               <i className="fas fa-map-marker-alt" />
@@ -92,6 +107,7 @@ class ReviewsItem extends React.Component {
 
           </UserInfoContainer>
         </UserHeader>
+        <Photos photos={review.photos} />
         <RatingContainer>
           <RatingCircles rating={review.rating_overall} />
         </RatingContainer>
@@ -100,11 +116,11 @@ class ReviewsItem extends React.Component {
             {review.title}
           </ReviewTitle>
 
-          <Description>{review.description}</Description>
+          {description}
 
           <div>
             Date of stay:
-            {` ${date}`}
+            {` ${travelDate}`}
           </div>
           <AdditionalRatings>
 

@@ -39,7 +39,8 @@ CREATE TABLE Reviews (
   location_ID INTEGER NOT NULL,
   user_location_ID INTEGER NOT NULL,
   user_ID INTEGER NOT NULL,
-  travel_date DATE,
+  travel_date DATE NOT NULL,
+  review_date DATE NOT NULL,
   travel_type TINYINT(1) NOT NULL,
   rating_overall TINYINT(1) DEFAULT 0,
   rating_expenses TINYINT(1) DEFAULT 0,
@@ -60,9 +61,9 @@ CREATE TABLE Reviews (
 
 CREATE TABLE LocationPhotos (
   ID INTEGER NOT NULL AUTO_INCREMENT,
-  location_ID INTEGER NOT NULL,
+  review_ID INTEGER NOT NULL,
   url VARCHAR(200) NOT NULL,
-  FOREIGN KEY (location_ID) REFERENCES Locations(ID),
+  FOREIGN KEY (review_ID) REFERENCES Reviews(ID),
   PRIMARY KEY (ID)
 );
 

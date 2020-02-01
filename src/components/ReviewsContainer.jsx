@@ -62,24 +62,24 @@ class ReviewsContainer extends React.Component {
         } else if (key === 'travel_date' && filtersObj[key][title].value === true) {
           if (filtersObj[key][title].id === 1) {
             // Mar - May
-            filters[key].push(3); // March
-            filters[key].push(4); // April
-            filters[key].push(5); // May
+            filters[key].push(2); // March
+            filters[key].push(3); // April
+            filters[key].push(4); // May
           } else if (filtersObj[key][title].id === 2) {
             // Jun - Aug
-            filters[key].push(6); // June
-            filters[key].push(7); // July
-            filters[key].push(8); // August
+            filters[key].push(5); // June
+            filters[key].push(6); // July
+            filters[key].push(7); // August
           } else if (filtersObj[key][title].id === 3) {
             // Sep - Nov
-            filters[key].push(9); // September
-            filters[key].push(10); // October
-            filters[key].push(11); // November
+            filters[key].push(8); // September
+            filters[key].push(9); // October
+            filters[key].push(10); // November
           } else if (filtersObj[key][title].id === 4) {
             // Dec - Feb
-            filters[key].push(12); // December
-            filters[key].push(1); // January
-            filters[key].push(2); // February
+            filters[key].push(11); // December
+            filters[key].push(0); // January
+            filters[key].push(1); // February
           }
         }
       });
@@ -88,9 +88,9 @@ class ReviewsContainer extends React.Component {
       // TODO fix the months filter
       const filterRating = filters.rating_overall.includes(review.rating_overall)
         || filters.rating_overall.length === 0;
+      const reviewDate = new Date(review.travel_date).getMonth();
 
-      const filterDate = filters.travel_date.includes((
-        new Date(review.travel_date)).getMonth() + 1)
+      const filterDate = filters.travel_date.includes(reviewDate)
         || filters.travel_date.length === 0;
 
       const filterType = filters.travel_type.includes(review.travel_type)
@@ -121,7 +121,7 @@ class ReviewsContainer extends React.Component {
     currentFilters[name][value] = currentFilters[name][value] || {};
     currentFilters[name][value].id = Number(id);
     currentFilters[name][value].value = !currentFilters[name][value].value;
-    console.log(currentFilters);
+    console.log('filters:', currentFilters);
     this.setState({
       filters: currentFilters,
       page: 1,
