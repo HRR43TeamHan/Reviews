@@ -203,7 +203,7 @@ class App extends React.Component {
         <Global styles={global} />
         <div>
           <Tabs
-            reviewsAmt={this.numberWithCommas(reviewsAmt)}
+            reviewsAmt={(reviewsAmt)}
             handleTabClick={handleTabClick}
             view={view}
           />

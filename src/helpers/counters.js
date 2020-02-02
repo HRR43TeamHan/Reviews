@@ -1,4 +1,4 @@
-const countRatings = (reviews) => {
+export const countRatings = (reviews) => {
   const total = reviews.length;
   const overall = {
     Excellent: {
@@ -44,4 +44,7 @@ const countRatings = (reviews) => {
   return { overall, total };
 };
 
-export default countRatings;
+export const numberWithCommas = (xx) => {
+  const output = xx.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  return output;
+};

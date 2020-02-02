@@ -11,6 +11,7 @@ import {
 } from '../css/paginatorCSS.js';
 
 const Paginator = (props) => {
+  if (!props) return null;
   const { reviewsAmt, page, setPage } = props;
   const totalPages = Math.floor(reviewsAmt / 10);
   if (page === 1 || page <= 4) {
@@ -73,6 +74,7 @@ const Paginator = (props) => {
 };
 
 Paginator.propTypes = {
+  reviewsAmt: PropTypes.number.isRequired,
   page: PropTypes.number.isRequired,
   setPage: PropTypes.func.isRequired,
 };

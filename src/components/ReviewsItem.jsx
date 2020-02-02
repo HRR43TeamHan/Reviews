@@ -61,7 +61,7 @@ class ReviewsItem extends React.Component {
     if (userInfoPop) {
       userInfoPopUp = (
         <UserInfoPopUp>
-        <div style={{ height: '12px' }}>        </div>
+          <div style={{ height: '12px' }}>        </div>
           <div style={{ width: '100px' }}> Report </div>
           <div style={{ height: '12px' }}>        </div>
           <div style={{ width: '100px' }}> Follow </div>

@@ -205,7 +205,7 @@ ReviewsContainer.propTypes = {
   languageCount: PropTypes.shape(
     { 0: PropTypes.shape({ title: PropTypes.string, value: PropTypes.number }) },
   ),
-  reviewsAmt: PropTypes.string.isRequired,
+  reviewsAmt: PropTypes.number.isRequired,
   reviews: PropTypes.arrayOf(PropTypes.object).isRequired,
   overall: PropTypes.shape(
     {

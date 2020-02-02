@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'; // ES6
 import {
   styles,
 } from '../css/tabsCSS.js';
-
+import { numberWithCommas } from '../helpers/counters.js';
 
 const Tabs = (props) => {
   const { reviewsAmt, handleTabClick, view } = props;
@@ -25,7 +25,7 @@ const Tabs = (props) => {
         <styles.iconSpan style={{ marginLeft: '10px' }} name="view" id="1">
           <i className="fa fa-pencil-square-o fa-2x" aria-hidden="true" name="view" id="1" />
         </styles.iconSpan>
-        <styles.textSpan name="view" id="1">{reviewsAmt}</styles.textSpan>
+        <styles.textSpan name="view" id="1">{numberWithCommas(reviewsAmt)}</styles.textSpan>
         <styles.textSpan name="view" id="1">Reviews</styles.textSpan>
       </styles.tabSpan>
     );
@@ -88,8 +88,11 @@ const Tabs = (props) => {
   );
 };
 
+Tabs.defaultProps = {
+};
+
 Tabs.propTypes = {
-  reviewsAmt: PropTypes.string.isRequired,
+  reviewsAmt: PropTypes.number.isRequired,
   view: PropTypes.number.isRequired,
   handleTabClick: PropTypes.func.isRequired,
 };
