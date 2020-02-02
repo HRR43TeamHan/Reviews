@@ -14,7 +14,7 @@ class ReviewsList extends React.Component {
 
 
   render() {
-    const { paginatedReviews, page } = this.props;
+    const { paginatedReviews } = this.props;
 
     console.log('page: ', paginatedReviews);
     return (

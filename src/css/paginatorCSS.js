@@ -5,7 +5,7 @@ export const PaginationContainer = styled.div({
   borderStyle: 'solid',
   borderColor: '#e5e5e5',
   backgroundColor: 'white',
-  color: '#078171',
+  textAlign: 'center',
   padding: '12px 10px',
 });
 
@@ -27,13 +27,24 @@ export const NextButtonDis = styled.div({
 });
 
 export const PageNumContainer = styled.div({
+  color: '#078171',
+  display: 'inline-block',
+  paddingTop: '3px',
+});
 
+export const PageNum = styled.span({
+  lineHeight: '40px',
+  height: '40px',
+  width: '40px',
+  fontSize: '14px',
+  fontWeight: '700',
+  border: 'none',
+  display: 'inline-block',
+  cursor: 'pointer',
+  borderRadius: '2px',
+  textAlign: 'center',
 });
 
 export const SelectedPageNum = styled.div({
-
-});
-
-export const PageNum = styled.div({
 
 });

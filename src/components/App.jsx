@@ -4,6 +4,7 @@ import { css, Global } from '@emotion/core';
 import { getLanguages } from '../helpers/parsers.js';
 import ReviewsContainer from './ReviewsContainer.jsx';
 import Tabs from './Tabs.jsx';
+import { AdContainer } from '../css/reviewsCSS.js';
 
 const global = css`
 body {
@@ -179,18 +180,18 @@ class App extends React.Component {
       componentContainer = (
         <ReviewsContainer
           reviews={reviews}
-          reviewsAmt={this.numberWithCommas(reviewsAmt)}
+          reviewsAmt={reviewsAmt}
           overall={overall}
           languageCount={languageCount}
         />
       );
     } else if (view === 2) {
       componentContainer = (
-        <div>TODO - View 2(Q&A container) goes here!</div>
+        <div style={{ width: '860px' }}>TODO - View 2(Q&A container) goes here!</div>
       );
     } else if (view === 3) {
       componentContainer = (
-        <div>TODO - View 3(Room tips container) goes here!</div>
+        <div style={{ width: '860px' }}>TODO - View 3(Room tips container) goes here!</div>
       );
     }
     //------------------------------------------------------------
@@ -198,16 +199,21 @@ class App extends React.Component {
     //------------------------------------------------------------
     return (
 
-      <div>
+      <div style={{ display: 'flex' }}>
         <Global styles={global} />
-        <Tabs
-          reviewsAmt={this.numberWithCommas(reviewsAmt)}
-          handleTabClick={handleTabClick}
-          view={view}
-        />
-        {componentContainer}
-
+        <div>
+          <Tabs
+            reviewsAmt={this.numberWithCommas(reviewsAmt)}
+            handleTabClick={handleTabClick}
+            view={view}
+          />
+          {componentContainer}
+        </div>
+        <AdContainer>
+          <div style={{width: '200px'}}>Ads go here</div>
+        </AdContainer>
       </div>
+
     );
   }
 }

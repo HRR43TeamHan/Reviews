@@ -1,5 +1,10 @@
 import styled from '@emotion/styled';
 
+export const AdContainer = styled.div({
+  width: '33.33%',
+  textAlign: 'center',
+});
+
 export const ReviewsListContainer = styled.div({
   // This is likely unecessary
 });
@@ -43,21 +48,24 @@ export const UserInfoContainer = styled.div({
 
 });
 
-export const UserInfoPopUpButton = styled.span({
+export const UserInfoPopUpButton = styled.div({
   float: 'right',
   marginRight: '12px',
   cursor: 'pointer',
+  width: '100px',
+  textAlign: 'center',
 });
 
 export const UserInfoPopUp = styled.div({
-  position: 'absolute',
+  position: 'relative',
   backgroundColor: 'white',
   borderColor: 'black',
   borderStyle: 'solid',
-  // left: '-25px',
+  boxShadow: '-1px 1px 5px 0px #888888',
   overflow: 'hidden',
   border: '1px solid #e5e5e5',
-  right: '18px',
+  left: '-35%',
+  textAlign: 'center',
 });
 
 export const UserInfoTop = styled.div({
@@ -113,7 +121,7 @@ export const ReviewContainer = styled.div({
   marginBottom: '12px',
 });
 
-export const Description = styled.span({
+export const Description = styled.div({
 
 });
 

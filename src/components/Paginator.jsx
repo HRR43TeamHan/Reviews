@@ -12,29 +12,56 @@ import {
 
 const Paginator = (props) => {
   const { reviewsAmt, page, setPage } = props;
-  const totalPages = Math.round(reviewsAmt / 10);
-  let paginator = null;
-  if (page === 1) {
+  const totalPages = Math.floor(reviewsAmt / 10);
+  if (page === 1 || page <= 4) {
     return (
       <PaginationContainer>
-        <div style={{ display: 'inline-block' }}>
-          Current page
-      {page}
-          <div>if (page == 1) = 1 2 3 4 5 6 ...{totalPages}</div>
-        </div>
+        <PageNumContainer>
+          <PageNum onClick={setPage} id={1} name="page">1</PageNum>
+          <PageNum onClick={setPage} id={2} name="page">2</PageNum>
+          <PageNum onClick={setPage} id={3} name="page">3</PageNum>
+          <PageNum onClick={setPage} id={4} name="page">4</PageNum>
+          <PageNum onClick={setPage} id={5} name="page">5</PageNum>
+          <PageNum onClick={setPage} id={6} name="page">6</PageNum>
+          <span> ... </span>
+          <PageNum onClick={setPage} id={totalPages} name="page">{totalPages}</PageNum>
+        </PageNumContainer>
       </PaginationContainer>
     );
   }
 
-  if (page > 4 && page < totalPages - 5) {
+  if (page > 4 && page < totalPages - 4) {
     return (
-      <div>if (page >= 5) = 1... N-2 N-1 N N+1 N+2 ...####</div>
+      <PaginationContainer>
+        <PageNumContainer>
+          <PageNum onClick={setPage} id={1} name="page">1</PageNum>
+          <span> ... </span>
+          <PageNum onClick={setPage} id={page - 2} name="page">{page - 2}</PageNum>
+          <PageNum onClick={setPage} id={page - 1} name="page">{page - 1}</PageNum>
+          <PageNum id={page} name="page">{page}</PageNum>
+          <PageNum onClick={setPage} id={page + 1} name="page">{page + 1}</PageNum>
+          <PageNum onClick={setPage} id={page + 2} name="page">{page + 2}</PageNum>
+          <span> ... </span>
+          <PageNum onClick={setPage} id={totalPages} name="page">{totalPages}</PageNum>
+        </PageNumContainer>
+      </PaginationContainer>
     );
   }
 
-  if (page < totalPages) {
+  if (page <= totalPages) {
     return (
-      <div>if (page >= 5) = 1... N-2 N-1 N N+1 N+2 ####</div>
+      <PaginationContainer>
+        <PageNumContainer>
+          <PageNum onClick={setPage} id={1} name="page">1</PageNum>
+          <span> ... </span>
+          <PageNum onClick={setPage} id={totalPages - 5} name="page">{totalPages - 5}</PageNum>
+          <PageNum onClick={setPage} id={totalPages - 4} name="page">{totalPages - 4}</PageNum>
+          <PageNum onClick={setPage} id={totalPages - 3} name="page">{totalPages - 3}</PageNum>
+          <PageNum onClick={setPage} id={totalPages - 2} name="page">{totalPages - 2}</PageNum>
+          <PageNum onClick={setPage} id={totalPages - 1} name="page">{totalPages - 1}</PageNum>
+          <PageNum onClick={setPage} id={totalPages} name="page">{totalPages}</PageNum>
+        </PageNumContainer>
+      </PaginationContainer>
     );
   }
   if (page === totalPages) {
@@ -42,7 +69,7 @@ const Paginator = (props) => {
       <div>if (page === last) = 1... N-5 N-4 N-3 N-2 N-1 ####</div>
     );
   }
-  return ({ paginator });
+  return (null);
 };
 
 Paginator.propTypes = {

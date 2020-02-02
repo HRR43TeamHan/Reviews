@@ -61,8 +61,11 @@ class ReviewsItem extends React.Component {
     if (userInfoPop) {
       userInfoPopUp = (
         <UserInfoPopUp>
-          <li>Report</li>
-          <li>Follow</li>
+        <div style={{ height: '12px' }}>        </div>
+          <div style={{ width: '100px' }}> Report </div>
+          <div style={{ height: '12px' }}>        </div>
+          <div style={{ width: '100px' }}> Follow </div>
+          <div style={{ height: '12px' }}>        </div>
         </UserInfoPopUp>
       );
     } else {
@@ -117,7 +120,7 @@ class ReviewsItem extends React.Component {
           </ReviewTitle>
 
           {description}
-
+          <div>{"More or Less"}</div>
           <div>
             Date of stay:
             {` ${travelDate}`}

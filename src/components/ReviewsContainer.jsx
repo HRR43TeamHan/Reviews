@@ -29,6 +29,7 @@ class ReviewsContainer extends React.Component {
       page: 1,
     };
     this.handleToggleFilter = this.handleToggleFilter.bind(this);
+    this.setPage = this.setPage.bind(this);
   }
 
   componentDidMount() {
@@ -37,6 +38,7 @@ class ReviewsContainer extends React.Component {
   setPage(event) {
     const { target } = event;
     const { id } = target;
+    console.log('setting to page:', id);
     this.setState({
       page: Number.parseInt(id, 10),
     });
@@ -139,7 +141,7 @@ class ReviewsContainer extends React.Component {
       reviews,
       overall,
     } = this.props;
-    const { handleToggleFilter } = this;
+    const { handleToggleFilter, setPage } = this;
     const { page, filteredReviews, filteredOnce } = this.state;
     let currentReviews;
     if (!filteredOnce) {
@@ -148,10 +150,11 @@ class ReviewsContainer extends React.Component {
       currentReviews = filteredReviews;
     }
     // TODO - consider using splice vs filter for pagination...perhaps less complexity
-    const paginatedReviews = currentReviews.filter((review, index) => {
-      if (index < page * 10 && index / 10 < page) return true;
-      return false;
-    });
+    const filteredReviewsAmt = currentReviews.length;
+    const start = (page === 1) ? 0 : (page * 10) - 1;
+    const end = (page === 1) ? 10 : ((page + 1) * 10) - 1;
+    const paginatedReviews = currentReviews.slice(start, end);
+    console.log('paginatedReviews:', paginatedReviews);
     // console.log('paginate: ', paginatedReviews);
     // console.log('page: ', page);
     // console.log('paginated: ', paginatedReviews);
@@ -185,8 +188,8 @@ class ReviewsContainer extends React.Component {
             languageCount={languageCount}
             handleToggleFilter={handleToggleFilter}
           />
-          <ReviewsList paginatedReviews={paginatedReviews} page={page} />
-          <Paginator page={page} reviewsAmt={reviewsAmt} />
+          <ReviewsList paginatedReviews={paginatedReviews} />
+          <Paginator page={page} reviewsAmt={filteredReviewsAmt} setPage={setPage} />
         </div>
       </div>
 
