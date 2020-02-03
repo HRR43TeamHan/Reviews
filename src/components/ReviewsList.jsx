@@ -1,33 +1,39 @@
 import React from 'react';
 import PropTypes from 'prop-types'; // ES6
 import ReviewsItem from './ReviewsItem.jsx';
+import {
+  NoResults,
+  NoResultsLink,
+} from '../css/reviewsCSS.js';
 
-//  import ReviewsItem from './reviewsItem.jsx';
-
-class ReviewsList extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  componentDidMount() {
-  }
-
-
-  render() {
-    const { paginatedReviews } = this.props;
-
-    console.log('page: ', paginatedReviews);
+const ReviewsList = (props) => {
+  const { paginatedReviews, handleToggleFilter } = props;
+  console.log('page: ', paginatedReviews);
+  if (!paginatedReviews.length) {
     return (
-      <div>
-        {paginatedReviews.map((review) => <ReviewsItem key={review.ID} review={review} />)}
-      </div>
+      <NoResults name="clear" onClick={handleToggleFilter}>
+        {'No results found. '}
+        <span style={{ fontWeight: 'bold' }}>Try</span>
+        {' removing a filter, changing your search, or '}
+        <NoResultsLink>
+          clear
+        </NoResultsLink>
+        {' all to read reviews.'}
+      </NoResults>
     );
   }
-}
+
+  return (
+    <div>
+      {paginatedReviews.map((review) => <ReviewsItem key={review.ID} review={review} />)}
+    </div>
+  );
+};
+
 
 ReviewsList.propTypes = {
   paginatedReviews: PropTypes.arrayOf(PropTypes.object).isRequired,
-  page: PropTypes.number.isRequired,
+  handleToggleFilter: PropTypes.func.isRequired,
 };
 
 export default ReviewsList;

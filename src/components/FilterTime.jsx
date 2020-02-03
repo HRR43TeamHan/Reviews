@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'; // ES6
 import {
   Checkbox,
   CheckboxLabel,
@@ -8,65 +9,71 @@ import {
   FilterTableRow,
 } from '../css/filtersCSS.js';
 
-class FilterTime extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+const FilterTime = (props) => {
+  const { handleToggleFilter } = props;
+  return (
+    <FiltersCard>
+      <FilterTitle>
+        Time of year
+      </FilterTitle>
+      <FilterTable>
 
-  render() {
-    const { handleToggleFilter } = this.props;
-    return (
-      <FiltersCard>
-        <FilterTitle>
-          Time of year
-        </FilterTitle>
-        <FilterTable>
-
-          <FilterTableRow>
+        <FilterTableRow>
+          <CheckboxLabel htmlFor="Mar-May">
             <Checkbox
               id="1"
               name="travel_date"
               value="mar-may"
               onChange={handleToggleFilter}
             />
-            <CheckboxLabel htmlFor="Mar-May">Mar-May</CheckboxLabel>
-          </FilterTableRow>
+            Mar-May
+          </CheckboxLabel>
+        </FilterTableRow>
 
-          <FilterTableRow>
+        <FilterTableRow>
+          <CheckboxLabel htmlFor="Jun-Aug">
             <Checkbox
               id="2"
               name="travel_date"
               value="jun-aug"
               onChange={handleToggleFilter}
             />
-            <CheckboxLabel htmlFor="Jun-Aug">Jun-Aug</CheckboxLabel>
-          </FilterTableRow>
+            Jun-Aug
+          </CheckboxLabel>
+        </FilterTableRow>
 
-          <FilterTableRow>
+        <FilterTableRow>
+          <CheckboxLabel htmlFor="Sep-Nov">
             <Checkbox
               id="3"
               name="travel_date"
               value="sep-nov"
               onChange={handleToggleFilter}
             />
-            <CheckboxLabel htmlFor="Sep-Nov">Sep-Nov</CheckboxLabel>
-          </FilterTableRow>
+            Sep-Nov
+          </CheckboxLabel>
+        </FilterTableRow>
 
-          <FilterTableRow>
+        <FilterTableRow>
+          <CheckboxLabel htmlFor="Dec-Feb">
             <Checkbox
               id="4"
               name="travel_date"
               value="dec-feb"
               onChange={handleToggleFilter}
             />
-            <CheckboxLabel htmlFor="Dec-Feb">Dec-Feb</CheckboxLabel>
-          </FilterTableRow>
+            Dec-Feb
+          </CheckboxLabel>
+        </FilterTableRow>
 
-        </FilterTable>
-      </FiltersCard>
+      </FilterTable>
+    </FiltersCard>
 
-    );
-  }
-}
+  );
+};
+
+FilterTime.propTypes = {
+  handleToggleFilter: PropTypes.func.isRequired,
+};
 
 export default FilterTime;

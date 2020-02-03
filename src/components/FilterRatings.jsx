@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
+import PropTypes from 'prop-types'; // ES6
 import {
   RatingsCard,
   FilterTitle,
@@ -120,6 +120,26 @@ const FilterRatings = (props) => {
       </FilterTable>
     </RatingsCard>
   );
+};
+
+FilterRatings.defaultProps = {
+  languageCount: undefined,
+};
+
+FilterRatings.propTypes = {
+  languageCount: PropTypes.shape(
+    { 0: PropTypes.shape({ title: PropTypes.string, value: PropTypes.number }) },
+  ),
+  overall: PropTypes.shape(
+    {
+      excellent: PropTypes.shape({ amt: PropTypes.string, percent: PropTypes.string }),
+      veryGood: PropTypes.shape({ amt: PropTypes.string, percent: PropTypes.string }),
+      average: PropTypes.shape({ amt: PropTypes.string, percent: PropTypes.string }),
+      poor: PropTypes.shape({ amt: PropTypes.string, percent: PropTypes.string }),
+      terrible: PropTypes.shape({ amt: PropTypes.string, percent: PropTypes.string }),
+    },
+  ).isRequired,
+  handleToggleFilter: PropTypes.func.isRequired,
 };
 
 export default FilterRatings;

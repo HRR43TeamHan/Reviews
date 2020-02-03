@@ -187,7 +187,7 @@ class App extends React.Component {
       );
     } else if (view === 2) {
       componentContainer = (
-        <div style={{ width: '860px' }}>TODO - View 2(Q&A container) goes here!</div>
+        <div style={{ width: '860px' }}>TODO - View 2(QA container) goes here!</div>
       );
     } else if (view === 3) {
       componentContainer = (
@@ -210,7 +210,7 @@ class App extends React.Component {
           {componentContainer}
         </div>
         <AdContainer>
-          <div style={{width: '200px'}}>Ads go here</div>
+          <div style={{ width: '200px' }}>Ads go here</div>
         </AdContainer>
       </div>
 

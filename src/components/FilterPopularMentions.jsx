@@ -1,26 +1,29 @@
 import React from 'react';
+import PropTypes from 'prop-types'; // ES6
 import {
   PopularMentionsCard,
   FilterTitle,
+  PopularMentionsButton,
 } from '../css/filtersCSS.js';
 
-class FilterPopularMentions extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    const { handleClick } = this.props;
-    return (
-      <PopularMentionsCard>
-        <FilterTitle>
-          Popular Mentions
+const FilterPopularMentions = (props) => {
+  const { handleToggleFilter } = props;
+  return (
+    <PopularMentionsCard>
+      <FilterTitle>
+        Popular Mentions
       </FilterTitle>
-        TODO - FilterPopularMentions.jsx
-              Tons of fake buttons here
-      </PopularMentionsCard>
-    )
-  }
-}
+      TODO - FilterPopularMentions.jsx
+            Tons of fake buttons here
+      <PopularMentionsButton>
+        All of them!
+      </PopularMentionsButton>
+    </PopularMentionsCard>
+  );
+};
+
+FilterPopularMentions.propTypes = {
+  handleToggleFilter: PropTypes.func.isRequired,
+};
 
 export default FilterPopularMentions;

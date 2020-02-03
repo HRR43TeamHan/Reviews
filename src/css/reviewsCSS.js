@@ -54,10 +54,12 @@ export const UserInfoPopUpButton = styled.div({
   cursor: 'pointer',
   width: '100px',
   textAlign: 'center',
+  zIndex: '20000',
+  position: 'relative',
 });
 
 export const UserInfoPopUp = styled.div({
-  position: 'relative',
+  position: 'absolute',
   backgroundColor: 'white',
   borderColor: 'black',
   borderStyle: 'solid',
@@ -66,6 +68,8 @@ export const UserInfoPopUp = styled.div({
   border: '1px solid #e5e5e5',
   left: '-35%',
   textAlign: 'center',
+  // zIndex: '666',
+  // transform: 'inherit',
 });
 
 export const UserInfoTop = styled.div({
@@ -125,6 +129,24 @@ export const Description = styled.div({
 
 });
 
+export const ExpandedDesc = styled.span({
+
+});
+
+export const CompressedDesc = styled.span({
+
+});
+
+export const ExpandText = styled.span({
+  color: '#767676',
+  borderBottom: '1px dotted #d6d6d6',
+});
+
+export const ExpandButton = styled.div({
+  width: 'fit-content',
+  cursor: 'pointer',
+});
+
 export const AdditionalRatings = styled.div({
   marginTop: '12px',
   webkitFlexWrap: 'wrap',
@@ -164,4 +186,39 @@ export const DisclaimerFoot = styled.div({
 export const SocialBar = styled.div({
   background: '#fff',
   padding: '0 24px 12px',
+});
+
+export const SocialSpan = styled.span({
+  marginRight: '20px',
+  color: '#a8b4be',
+  cursor: 'pointer',
+  ':hover': {
+    textDecoration: 'underline',
+    color: '#00a680',
+  },
+});
+
+export const SocialText = styled.span({
+  marginLeft: '4px',
+  color: 'black',
+  ':hover': {
+    textDecoration: 'underline',
+  },
+});
+
+export const NoResults = styled.div({
+  borderColor: '#fad69f',
+  backgroundColor: '#fef8d0',
+  padding: '12px 18px',
+  border: '1px solid',
+  borderRadius: '3px',
+  boxSizing: 'border-box',
+  fontSize: '12px',
+  lineHeight: '14px',
+});
+
+export const NoResultsLink = styled.span({
+
+  display: 'inline',
+  color: '#069',
 });

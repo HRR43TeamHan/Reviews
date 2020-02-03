@@ -1,4 +1,3 @@
-
 import styled from '@emotion/styled';
 import withProps from 'recompose/withProps';
 // import { css } from '@emotion/core';
@@ -171,6 +170,12 @@ export const LanguageAmt = styled.label({
 
 });
 
+export const LanguagePopButton = styled.div({
+  color: '#078171',
+  fontWeight: '700',
+  cursor: 'pointer',
+});
+
 export const PopularMentionCard = styled.label({
   padding: '12px',
 
@@ -196,4 +201,12 @@ export const SearchIcon = styled.i({
   fontSize: '1em',
   left: '12px',
   bottom: '0.85em',
+});
+
+export const PopularMentionsButton = styled.div({
+  borderRadius: '3px',
+  backgroundColor: '#fff',
+  padding: '6px 10px',
+  fontSize: '12px',
+  lineHeight: '16px',
 });

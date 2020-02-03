@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types'; // ES6
 import Photos from './Photos.jsx';
 import RatingCircles from './RatingCircles.jsx';
+import SocialButton from './SocialButton.jsx';
+
 import {
   RatingContainer,
   ReviewsItemCard,
@@ -17,9 +19,11 @@ import {
   ReviewTitle,
   ReviewContainer,
   Description,
+  ExpandButton,
+  ExpandText,
+  ExpandedDesc,
+  CompressedDesc,
   AdditionalRatings,
-  AdditionalRatingInner,
-  AdditionalRatingLabel,
   DisclaimerFoot,
   SocialBar,
 } from '../css/reviewsCSS.js';
@@ -32,6 +36,7 @@ class ReviewsItem extends React.Component {
       userInfoPop: false,
     };
     this.handlePopUp = this.handlePopUp.bind(this);
+    this.toggleExpanded = this.toggleExpanded.bind(this);
   }
 
   handlePopUp() {
@@ -42,10 +47,17 @@ class ReviewsItem extends React.Component {
     });
   }
 
+  toggleExpanded() {
+    const { expanded } = this.state;
+    this.setState({
+      expanded: !expanded,
+    });
+  }
+
   render() {
     const { review } = this.props;
     const { expanded, userInfoPop } = this.state;
-    const { handlePopUp } = this;
+    const { handlePopUp, toggleExpanded } = this;
     // Set month date accordingly
     const monthNamesLong = ['January', 'February', 'March', 'April', 'May', 'June',
       'July', 'August', 'September', 'October', 'November', 'December'];
@@ -71,15 +83,33 @@ class ReviewsItem extends React.Component {
     } else {
       userInfoPopUp = null;
     }
-    let description;
+    let description; let additionalRatings; let expandText;
     if (expanded) {
-      description = <Description>TODO - make expanded version</Description>;
+      description = (
+        <Description>
+          TODO - finish expanded version
+          <ExpandedDesc>{review.description}</ExpandedDesc>
+        </Description>
+      );
+      additionalRatings = (
+        <AdditionalRatings>
+          <RatingCircles rating={review.rating_expenses} label="Value" />
+          <RatingCircles rating={review.rating_location} label="Location" />
+          <RatingCircles rating={review.rating_rooms} label="Room" />
+          <RatingCircles rating={review.rating_service} label="Service" />
+          <RatingCircles rating={review.rating_sleep} label="Sleep" />
+          <RatingCircles rating={review.rating_clean} label="Cleanliness" />
+        </AdditionalRatings>
+      );
+      expandText = <ExpandText>Read More</ExpandText>;
     } else {
       description = (
         <Description>
-          <span>{review.description}</span>
+          <CompressedDesc>{review.description}</CompressedDesc>
         </Description>
       );
+      expandText = <ExpandText>Read Less</ExpandText>;
+      additionalRatings = null;
     }
     return (
       <ReviewsItemCard>
@@ -120,33 +150,20 @@ class ReviewsItem extends React.Component {
           </ReviewTitle>
 
           {description}
-          <div>{"More or Less"}</div>
+          <ExpandButton onClick={toggleExpanded}>{expandText}</ExpandButton>
           <div>
             Date of stay:
             {` ${travelDate}`}
           </div>
-          <AdditionalRatings>
-
-            <RatingCircles rating={review.rating_expenses} label="Value" />
-
-            <RatingCircles rating={review.rating_location} label="Location" />
-
-            <RatingCircles rating={review.rating_rooms} label="Room" />
-
-            <RatingCircles rating={review.rating_service} label="Service" />
-
-            <RatingCircles rating={review.rating_sleep} label="Sleep" />
-
-            <RatingCircles rating={review.rating_clean} label="Cleanliness" />
-
-          </AdditionalRatings>
+          {additionalRatings}
           <DisclaimerFoot>
             Disclaimer that nobody reads and the views expressed above
              are the representation of a seeder algorithm.
           </DisclaimerFoot>
         </ReviewContainer>
         <SocialBar>
-          SocalBar Here
+          <SocialButton label="Helpful" />
+          <SocialButton label="Share" />
         </SocialBar>
       </ReviewsItemCard>
 
@@ -164,6 +181,7 @@ ReviewsItem.propTypes = {
       description: PropTypes.string.isRequired,
       language_ID: PropTypes.number.isRequired,
       travel_date: PropTypes.string.isRequired,
+      review_date: PropTypes.string.isRequired,
       travel_type: PropTypes.number.isRequired,
       rating_overall: PropTypes.number.isRequired,
       rating_expenses: PropTypes.number.isRequired,
@@ -175,6 +193,7 @@ ReviewsItem.propTypes = {
       contributions: PropTypes.number.isRequired,
       votes: PropTypes.number.isRequired,
       location: PropTypes.string.isRequired,
+      photoUrl: PropTypes.string,
       photos: null,
     },
   ).isRequired,

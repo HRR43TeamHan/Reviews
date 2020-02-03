@@ -22,7 +22,7 @@ class ReviewsContainer extends React.Component {
         },
         travel_date: {},
         travel_type: {},
-        language_ID: {},
+        language_ID: 0,
       },
       filteredOnce: false,
       filteredReviews: [],
@@ -38,7 +38,7 @@ class ReviewsContainer extends React.Component {
   setPage(event) {
     const { target } = event;
     const { id } = target;
-    console.log('setting to page:', id);
+    // console.log('setting to page:', id);
     this.setState({
       page: Number.parseInt(id, 10),
     });
@@ -60,7 +60,7 @@ class ReviewsContainer extends React.Component {
             filters[key].push(filtersObj[key][title].id);
           }
         } else if (key === 'language_ID') {
-          filters[key][0] = filtersObj[key][title].id;
+          filters[key] = filtersObj[key][title].id;
         } else if (key === 'travel_date' && filtersObj[key][title].value === true) {
           if (filtersObj[key][title].id === 1) {
             // Mar - May
@@ -86,6 +86,7 @@ class ReviewsContainer extends React.Component {
         }
       });
     });
+    filters.language_ID = filtersObj.language_ID;
     filteredReviews = filteredReviews.filter((review) => {
       // TODO fix the months filter
       const filterRating = filters.rating_overall.includes(review.rating_overall)
@@ -98,10 +99,9 @@ class ReviewsContainer extends React.Component {
       const filterType = filters.travel_type.includes(review.travel_type)
         || filters.travel_type.length === 0;
 
-      // const filterLanguage = filters.language_ID === review.language_ID
-      // || filters.language_ID === 0;
-      const filterLanguage = true;
-
+      const filterLanguage = (filters.language_ID === review.language_ID
+        || filters.language_ID === 0 || filters.language_ID === undefined);
+      // const filterLanguage = true;
       if (filterRating && filterType && filterLanguage && filterDate) {
         return true;
       }
@@ -118,12 +118,32 @@ class ReviewsContainer extends React.Component {
     const { target } = event;
     const { name, value, id } = target;
     const { filters } = this.state;
-    const currentFilters = { ...filters };
-    // id for DOM element is in string so we make it a number for easing filtering function
-    currentFilters[name][value] = currentFilters[name][value] || {};
-    currentFilters[name][value].id = Number(id);
-    currentFilters[name][value].value = !currentFilters[name][value].value;
-    console.log('filters:', currentFilters);
+    let currentFilters = { ...filters };
+    // We have to assign the Radio Button language_ID differently than a checkbox...
+    // TODO - check if a radio button vs checkbox rather than the name...
+    if (name === 'clear') {
+      currentFilters = {
+        rating_overall: {
+          excellent: { id: 5, value: false },
+          veryGood: { id: 4, value: false },
+          average: { id: 3, value: false },
+          poor: { id: 2, value: false },
+          terrible: { id: 1, value: false },
+        },
+        travel_date: {},
+        travel_type: {},
+        language_ID: 0,
+      };
+    } else if (name === 'language_ID') {
+      currentFilters[name] = Number(id);
+    } else {
+      currentFilters[name][value] = currentFilters[name][value] || {};
+      // id for DOM element is in string so we make it a number for easing filtering function
+      currentFilters[name][value].id = Number(id);
+      currentFilters[name][value].value = !currentFilters[name][value].value;
+    }
+
+    // console.log('filters:', currentFilters);
     this.setState({
       filters: currentFilters,
       page: 1,
@@ -149,20 +169,14 @@ class ReviewsContainer extends React.Component {
     } else {
       currentReviews = filteredReviews;
     }
-    // TODO - consider using splice vs filter for pagination...perhaps less complexity
     const filteredReviewsAmt = currentReviews.length;
     const start = (page === 1) ? 0 : (page * 10) - 1;
     const end = (page === 1) ? 10 : ((page + 1) * 10) - 1;
     const paginatedReviews = currentReviews.slice(start, end);
-    console.log('paginatedReviews:', paginatedReviews);
-    // console.log('paginate: ', paginatedReviews);
-    // console.log('page: ', page);
-    // console.log('paginated: ', paginatedReviews);
+    // console.log('paginatedReviews:', paginatedReviews);
     return (
       <div>
-
         <Global styles={styles.global} />
-
         <div>
           <styles.headerOuterDiv>
             <styles.headerInnerDiv>
@@ -179,20 +193,20 @@ class ReviewsContainer extends React.Component {
             </styles.headerInnerDiv>
           </styles.headerOuterDiv>
         </div>
-        {/* TODO - Replace Filters with Compnent vs being here */}
         <div>
-
           <AllFilters
             overall={overall}
             reviewsAmt={reviewsAmt}
             languageCount={languageCount}
             handleToggleFilter={handleToggleFilter}
           />
-          <ReviewsList paginatedReviews={paginatedReviews} />
+          <ReviewsList
+            paginatedReviews={paginatedReviews}
+            handleToggleFilter={handleToggleFilter}
+          />
           <Paginator page={page} reviewsAmt={filteredReviewsAmt} setPage={setPage} />
         </div>
       </div>
-
     );
   }
 }
