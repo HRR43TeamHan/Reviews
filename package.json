@@ -9,23 +9,33 @@
     "axios": "^0.19.2",
     "express": "^4.17.1",
     "faker": "^4.1.0",
+    "jest-junit": "^10.0.0",
     "mysql": "^2.18.1",
+    "prop-types": "^15.7.2",
     "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "react-dom": "^16.12.0",
+    "react-test-renderer": "^16.12.0",
+    "recompose": "^0.30.0"
   },
   "devDependencies": {
-    "@emotion/babel-preset-css-prop": "^10.0.27",
     "@babel/core": "^7.8.3",
     "@babel/preset-env": "^7.8.3",
     "@babel/preset-react": "^7.8.3",
+    "@emotion/babel-preset-css-prop": "^10.0.27",
     "babel-loader": "^8.0.6",
-    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor.git",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-plugin-import": "^2.20.0",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.18.0",
+    "eslint-plugin-react-hooks": "^1.7.0",
     "jest": "^25.1.0",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10"
   },
   "scripts": {
-    "postinstall": "curl -s https://raw.githubusercontent.com/reactorcore/pomander/master/bin/install | bash",
     "seeder": "node seeder.js",
     "setup": "mysql -u root < ./schema.sql",
     "devstart": "nodemon server/index.js --ignore src --ignore public",
@@ -42,5 +52,8 @@
   "bugs": {
     "url": "https://github.com/incogitance/Reviews/issues"
   },
-  "homepage": "https://github.com/incogitance/Reviews#readme"
+  "homepage": "https://github.com/incogitance/Reviews#readme",
+  "jest-junit": {
+    "output": "./test-results/junit/results.xml"
+  }
 }

@@ -1,5 +1,7 @@
+/* eslint-disable no-console */
 const express = require('express');
 const db = require('../database');
+
 const app = express();
 
 
@@ -7,9 +9,9 @@ const PORT = process.env.PORT || 3030;
 
 
 // Create database connection
-db.connection.connect(function (err) {
+db.connection.connect((err) => {
   if (err) {
-    console.error('Database connection failed: ' + err.stack);
+    console.error(`Database connection failed: ${err.stack}`);
     return;
   }
   console.log('Connected to database.');

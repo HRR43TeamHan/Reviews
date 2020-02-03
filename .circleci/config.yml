@@ -27,18 +27,32 @@ jobs:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
             # fallback to using the latest cache if no exact match is found
-            - v1-dependencies-
 
-      - run: yarn install
+      - run: npm install
 
+      - run:
+          name: Creating necessary folders!🤺
+          command: |
+            mkdir test-results;
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
       # run tests!
-      - run: yarn test
+
+
+      - run:
+          name: Run tests with JUnit as reporter
+          command: npm test --ci --runInBand --reporters=default --reporters=jest-junit;
+          environment:
+            JEST_JUNIT_OUTPUT_DIR: "reports/junit/js-test-results"
+
+      - run: npm test
+      - store_test_results:
+          path: reports/junit
+
       - store_artifacts: # special step to save test results as as artifact
           # Upload test summary for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
           path: test-results.xml
-          prefix: tests
+          prefix: test-results
