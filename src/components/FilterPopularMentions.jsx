@@ -6,7 +6,7 @@ import {
   PopularMentionsButton,
 } from '../css/filtersCSS.js';
 
-const FilterPopularMentions = (props) => {
+function FilterPopularMentions(props) {
   const { handleToggleFilter } = props;
   return (
     <PopularMentionsCard>
@@ -20,7 +20,7 @@ const FilterPopularMentions = (props) => {
       </PopularMentionsButton>
     </PopularMentionsCard>
   );
-};
+}
 
 FilterPopularMentions.propTypes = {
   handleToggleFilter: PropTypes.func.isRequired,

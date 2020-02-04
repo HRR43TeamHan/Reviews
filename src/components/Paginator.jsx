@@ -3,14 +3,11 @@ import PropTypes from 'prop-types'; // ES6
 
 import {
   PaginationContainer,
-  PreviousButton,
-  NextButton,
   PageNumContainer,
-  SelectedPageNum,
   PageNum,
 } from '../css/paginatorCSS.js';
 
-const Paginator = (props) => {
+function Paginator(props) {
   if (!props) return null;
   const { reviewsAmt, page, setPage } = props;
   const totalPages = Math.floor(reviewsAmt / 10);
@@ -71,7 +68,7 @@ const Paginator = (props) => {
     );
   }
   return (null);
-};
+}
 
 Paginator.propTypes = {
   reviewsAmt: PropTypes.number.isRequired,

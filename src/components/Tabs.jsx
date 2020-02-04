@@ -5,7 +5,7 @@ import {
 } from '../css/tabsCSS.js';
 import { numberWithCommas } from '../helpers/counters.js';
 
-const Tabs = (props) => {
+function Tabs(props) {
   const { reviewsAmt, handleTabClick, view } = props;
   let tab1; let tab2; let tab3;
 
@@ -86,7 +86,7 @@ const Tabs = (props) => {
 
     </styles.containerDiv>
   );
-};
+}
 
 Tabs.defaultProps = {
 };

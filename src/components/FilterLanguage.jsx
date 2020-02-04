@@ -10,7 +10,7 @@ import {
   LanguagePopButton,
 } from '../css/filtersCSS.js';
 
-const FilterLanguage = (props) => {
+function FilterLanguage(props) {
   // TODO - iterate through all languages
   // TODO - and make modal
   const { handleToggleFilter, languageCount } = props;
@@ -86,7 +86,7 @@ const FilterLanguage = (props) => {
       </FilterTable>
     </LanguageCard>
   );
-};
+}
 
 
 FilterLanguage.defaultProps = {

@@ -7,7 +7,7 @@ import {
 } from '../css/photosCSS.js';
 
 
-const Photos = (props) => {
+function Photos(props) {
   const { photos } = props;
   if (!photos) return null;
   let overlay = null;
@@ -35,7 +35,7 @@ const Photos = (props) => {
       })}
     </PhotoContainer>
   );
-};
+}
 
 
 Photos.defaultProps = {

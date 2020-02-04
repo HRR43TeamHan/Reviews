@@ -13,7 +13,7 @@ import {
 } from '../css/filtersCSS.js';
 import { numberWithCommas } from '../helpers/counters.js';
 
-const FilterRatings = (props) => {
+function FilterRatings(props) {
   const { overall, handleToggleFilter } = props;
   if (!overall) return null;
   const excellentWidth = {
@@ -121,7 +121,7 @@ const FilterRatings = (props) => {
       </FilterTable>
     </RatingsCard>
   );
-};
+}
 
 FilterRatings.defaultProps = {
   languageCount: undefined,

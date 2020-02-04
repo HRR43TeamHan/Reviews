@@ -126,7 +126,6 @@ var seedUsers = (amount) => {
 };
 
 var seedLocationPhotos = () => {
-  // TODO - get amount of reviews to work with
   // seed location photos based on reviews
   var photoSeedCount = 0;
   var totalReviews = 0;

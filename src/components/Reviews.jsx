@@ -80,7 +80,7 @@ class Reviews extends React.Component {
         return response.data;
       })
       .catch((error) => {
-        console.error(error);
+       console.error(error);
       })
       .then((reviewsArray) => {
         // this is always executed
@@ -96,7 +96,7 @@ class Reviews extends React.Component {
         this.setState({
           languages,
         });
-        console.log(languages);
+        // console.log(languages);
       }).then(() => {
         const { languages } = this.state;
         const total = reviews.length;
@@ -110,7 +110,7 @@ class Reviews extends React.Component {
         reviews.forEach((review) => {
           languageCount[review.language_ID].value += 1 || 1;
         });
-        console.log(languageCount);
+        // console.log(languageCount);
         this.setState({
           languageCount,
         });

@@ -9,7 +9,7 @@ import {
   FilterTableRow,
 } from '../css/filtersCSS.js';
 
-const FilterTime = (props) => {
+function FilterTime(props) {
   const { handleToggleFilter } = props;
   return (
     <FiltersCard>
@@ -70,7 +70,7 @@ const FilterTime = (props) => {
     </FiltersCard>
 
   );
-};
+}
 
 FilterTime.propTypes = {
   handleToggleFilter: PropTypes.func.isRequired,
