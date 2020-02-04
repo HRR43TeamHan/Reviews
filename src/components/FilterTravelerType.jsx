@@ -9,7 +9,7 @@ import {
   FilterTableRow,
 } from '../css/filtersCSS.js';
 
-const FilterTravelerType = (props) => {
+function FilterTravelerType(props) {
   const { handleToggleFilter } = props;
   return (
     <FiltersCard>

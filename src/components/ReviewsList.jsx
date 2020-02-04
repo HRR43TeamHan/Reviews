@@ -25,7 +25,7 @@ const ReviewsList = (props) => {
 
   return (
     <div>
-      {paginatedReviews.map((review) => <ReviewsItem key={review.ID} review={review} />)}
+      {paginatedReviews.map((review, i) => <ReviewsItem id={i} key={review.ID} review={review} />)}
     </div>
   );
 };

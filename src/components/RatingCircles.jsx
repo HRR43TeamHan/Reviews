@@ -7,7 +7,7 @@ import {
   AdditionalRatingLabel,
 } from '../css/reviewsCSS.js';
 
-const RatingCircles = (props) => {
+function RatingCircles(props) {
   const { rating, label } = props;
   if (rating === 0) return null;
   let circlesfull = '';
@@ -40,7 +40,7 @@ const RatingCircles = (props) => {
       <EmptyCircles>{circlesempty}</EmptyCircles>
     </span>
   );
-};
+}
 
 RatingCircles.defaultProps = {
   label: '',

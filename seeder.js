@@ -70,7 +70,6 @@ var seedReviews = (amount) => {
       //  photos VARCHAR(255) NULL,
     };
     let params = [t.description, t.title, t.languageID, t.locationID, t.userLocationID, t.userID, t.travelDate, t.reviewDate, t.travelType, t.ratingOverall, t.ratingExpenses, t.ratingLocation, t.ratingRooms, t.ratingService, t.ratingClean, t.ratingSleep, t.userThoughts, t.userTips];
-    //TODO - add the photo urls
     db.connection.query('INSERT INTO Reviews (description, title, language_ID, location_ID, user_location_ID, user_ID, travel_date, review_date, travel_type, rating_overall, rating_expenses, rating_location, rating_rooms, rating_service, rating_clean, rating_sleep, user_thoughts, user_tips) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', params, (err, data) => {
       if (err) {
         console.log('error seeding Reviews TABLE', err);
@@ -127,7 +126,6 @@ var seedUsers = (amount) => {
 };
 
 var seedLocationPhotos = () => {
-  // TODO - get amount of reviews to work with
   // seed location photos based on reviews
   var photoSeedCount = 0;
   var totalReviews = 0;
@@ -151,8 +149,6 @@ var seedLocationPhotos = () => {
         let photosa = photos.join(`",${photoSeedCount}),("`);
         var queryString =
           `INSERT INTO LocationPhotos (url, review_id) VALUES ("${photosa}", ${photoSeedCount})`;
-
-        console.log(queryString);
         db.connection.query(queryString, photos, (err, result) => {
           if (err) {
             console.error(err);
@@ -163,7 +159,6 @@ var seedLocationPhotos = () => {
             } else {
               db.connection.end();
             }
-            console.log(result);
           }
         });
 

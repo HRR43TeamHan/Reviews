@@ -6,19 +6,13 @@ import {
 } from '../css/filtersCSS.js';
 
 
-class Search extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <SearchContainer>
-        <SearchIcon className="fas fa-search"></SearchIcon>
-        <SearchInput />
-      </SearchContainer>
-    )
-  }
+function Search(props) {
+  return (
+    <SearchContainer>
+      <SearchIcon className="fas fa-search" />
+      <SearchInput />
+    </SearchContainer>
+  );
 }
 
 export default Search;

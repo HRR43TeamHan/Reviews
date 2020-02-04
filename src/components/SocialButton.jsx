@@ -4,7 +4,7 @@ import {
   SocialSpan,
 } from '../css/reviewsCSS.js';
 
-const SocialButton = (props) => {
+function SocialButton(props) {
   const { label } = props;
   let button;
   if (label === 'Helpful') {

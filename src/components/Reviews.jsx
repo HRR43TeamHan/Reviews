@@ -27,7 +27,7 @@ input[type="radio"] {
 
 `;
 
-class App extends React.Component {
+class Reviews extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -80,7 +80,7 @@ class App extends React.Component {
         return response.data;
       })
       .catch((error) => {
-        console.error(error);
+       console.error(error);
       })
       .then((reviewsArray) => {
         // this is always executed
@@ -96,7 +96,7 @@ class App extends React.Component {
         this.setState({
           languages,
         });
-        console.log(languages);
+        // console.log(languages);
       }).then(() => {
         const { languages } = this.state;
         const total = reviews.length;
@@ -110,7 +110,7 @@ class App extends React.Component {
         reviews.forEach((review) => {
           languageCount[review.language_ID].value += 1 || 1;
         });
-        console.log(languageCount);
+        // console.log(languageCount);
         this.setState({
           languageCount,
         });
@@ -188,10 +188,14 @@ class App extends React.Component {
     } else if (view === 2) {
       componentContainer = (
         <div style={{ width: '860px' }}>TODO - View 2(QA container) goes here!</div>
+
       );
     } else if (view === 3) {
       componentContainer = (
-        <div style={{ width: '860px' }}>TODO - View 3(Room tips container) goes here!</div>
+        <div style={{ width: '860px' }}>
+          TODO - View 3(Room tips container) goes here!
+          <iframe width="100%" height="360" src="https://www.youtube.com/embed/fBsnlVh4J8M?start=2&autoplay=1" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen title="Jordan NeferGonna Let you Down" />
+        </div>
       );
     }
     //------------------------------------------------------------
@@ -218,4 +222,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default Reviews;

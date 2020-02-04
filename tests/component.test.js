@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, shallow } from 'enzyme';
 
-import App from '../src/components/App.jsx';
+import Reviews from '../src/components/Reviews.jsx';
 import ReviewsContainer from '../src/components/ReviewsContainer.jsx';
 import ReviewsList from '../src/components/ReviewsList.jsx';
 import ReviewsItem from '../src/components/ReviewsItem.jsx';
@@ -194,20 +194,20 @@ import AllFilters from '../src/components/AllFilters.jsx';
 		});
 	});
 
-describe('App.jsx', () => {
+describe('Reviews.jsx', () => {
 
   test('it should exist', () => {
-    expect(new App()).toBeDefined();
+    expect(new Reviews()).toBeDefined();
   });
   test('it should be an instance of a class', () => {
-    expect(new App()).toBeInstanceOf(App);
+    expect(new Reviews()).toBeInstanceOf(App);
   });
 });
 
 describe('App should be Statefull component', () => {
   test('shallow wrapper instance should not be null', () => {
 
-    const wrapper = shallow(<App {...props} />);
+    const wrapper = shallow(<Reviews {...props} />);
     const instance = wrapper.instance();
 
     expect(instance).not.toBe(null);

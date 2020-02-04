@@ -7,7 +7,7 @@ import {
 } from '../css/photosCSS.js';
 
 
-const Photos = (props) => {
+function Photos(props) {
   const { photos } = props;
   if (!photos) return null;
   let overlay = null;
@@ -25,7 +25,6 @@ const Photos = (props) => {
   return (
     <PhotoContainer>
       {/* Map out the photos into a photo card */}
-      {/* TODO - handle more than 3 photos with an overlay of how many extra */}
       {displayArray.map((photoUrl, i) => {
         if (i !== 2) { return <PhotoCard key={photoUrl} style={{ width, backgroundImage: `url(${photoUrl})` }} />; }
         return (
@@ -36,7 +35,7 @@ const Photos = (props) => {
       })}
     </PhotoContainer>
   );
-};
+}
 
 
 Photos.defaultProps = {

@@ -5,7 +5,7 @@ const db = require('../database');
 const app = express();
 
 
-const PORT = process.env.PORT || 3030;
+const PORT = process.env.REVIEWS_PORT || 3030;
 
 
 // Create database connection

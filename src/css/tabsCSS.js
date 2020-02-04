@@ -42,7 +42,6 @@ export const styles = {
   }),
 
   // #e5e5e5
-  // TODO - switch black for correct color
   tabSpan: styled.span({
     border: '1px solid #e5e5e5',
     color: '#078171',

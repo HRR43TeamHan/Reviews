@@ -10,7 +10,7 @@ import FilterLanguage from './FilterLanguage.jsx';
 import FilterPopularMentions from './FilterPopularMentions.jsx';
 import Search from './Search.jsx';
 
-const AllFilters = (props) => {
+function AllFilters(props) {
   const { overall, handleToggleFilter, languageCount } = props;
 
 

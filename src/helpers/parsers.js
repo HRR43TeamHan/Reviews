@@ -14,8 +14,6 @@ export const getLanguages = () => {
 export const getReviews = (ID) => {
   return axios.get(`/../api/reviews/${ID}`)
     .then((response) => {
-      // TODO - handle the success
-      // console.log(response.data);
       return response.data;
     })
     .catch((error) => {
@@ -26,8 +24,6 @@ export const getReviews = (ID) => {
 export const getQA = (ID) => {
   return axios.get(`/../api/reviews/QA/${ID}`)
     .then((response) => {
-      // TODO - handle the success
-      // console.log(response.data);
       return response.data;
     })
     .catch((error) => {
@@ -38,8 +34,6 @@ export const getQA = (ID) => {
 export const getRoomTips = (ID) => {
   return axios.get(`/../api/reviews/RoomTips/${ID}`)
     .then((response) => {
-      // TODO - handle the success
-      // console.log(response.data);
       return response.data;
     })
     .catch((error) => {
