@@ -27,7 +27,7 @@ input[type="radio"] {
 
 `;
 
-class App extends React.Component {
+class Reviews extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -188,10 +188,14 @@ class App extends React.Component {
     } else if (view === 2) {
       componentContainer = (
         <div style={{ width: '860px' }}>TODO - View 2(QA container) goes here!</div>
+
       );
     } else if (view === 3) {
       componentContainer = (
-        <div style={{ width: '860px' }}>TODO - View 3(Room tips container) goes here!</div>
+        <div style={{ width: '860px' }}>
+          TODO - View 3(Room tips container) goes here!
+          <iframe width="100%" height="360" src="https://www.youtube.com/embed/fBsnlVh4J8M?start=2&autoplay=1" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen title="Jordan NeferGonna Let you Down" />
+        </div>
       );
     }
     //------------------------------------------------------------
@@ -218,4 +222,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default Reviews;

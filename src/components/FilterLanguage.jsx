@@ -12,7 +12,6 @@ import {
 
 const FilterLanguage = (props) => {
   // TODO - iterate through all languages
-  // TODO - render the first 4 languages
   // TODO - and make modal
   const { handleToggleFilter, languageCount } = props;
   if (!languageCount) return null;

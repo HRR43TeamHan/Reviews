@@ -88,7 +88,6 @@ class ReviewsContainer extends React.Component {
     });
     filters.language_ID = filtersObj.language_ID;
     filteredReviews = filteredReviews.filter((review) => {
-      // TODO fix the months filter
       const filterRating = filters.rating_overall.includes(review.rating_overall)
         || filters.rating_overall.length === 0;
       const reviewDate = new Date(review.travel_date).getMonth();
@@ -120,7 +119,6 @@ class ReviewsContainer extends React.Component {
     const { filters } = this.state;
     let currentFilters = { ...filters };
     // We have to assign the Radio Button language_ID differently than a checkbox...
-    // TODO - check if a radio button vs checkbox rather than the name...
     if (name === 'clear') {
       currentFilters = {
         rating_overall: {

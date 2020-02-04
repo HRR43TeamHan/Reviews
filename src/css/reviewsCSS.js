@@ -133,8 +133,9 @@ export const ExpandedDesc = styled.span({
 
 });
 
-export const CompressedDesc = styled.span({
-
+export const CompressedDesc = styled.div({
+  overflow: 'hidden',
+  height: '3.5em',
 });
 
 export const ExpandText = styled.span({
@@ -145,6 +146,7 @@ export const ExpandText = styled.span({
 export const ExpandButton = styled.div({
   width: 'fit-content',
   cursor: 'pointer',
+  margin: '6px 0px 12px',
 });
 
 export const AdditionalRatings = styled.div({

@@ -87,7 +87,6 @@ class ReviewsItem extends React.Component {
     if (expanded) {
       description = (
         <Description>
-          TODO - finish expanded version
           <ExpandedDesc>{review.description}</ExpandedDesc>
         </Description>
       );
@@ -101,14 +100,14 @@ class ReviewsItem extends React.Component {
           <RatingCircles rating={review.rating_clean} label="Cleanliness" />
         </AdditionalRatings>
       );
-      expandText = <ExpandText>Read More</ExpandText>;
+      expandText = <ExpandText>Read Less</ExpandText>;
     } else {
       description = (
         <Description>
           <CompressedDesc>{review.description}</CompressedDesc>
         </Description>
       );
-      expandText = <ExpandText>Read Less</ExpandText>;
+      expandText = <ExpandText>Read More</ExpandText>;
       additionalRatings = null;
     }
     return (

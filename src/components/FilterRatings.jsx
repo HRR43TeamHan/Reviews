@@ -11,6 +11,7 @@ import {
   Checkbox,
   CheckboxLabel,
 } from '../css/filtersCSS.js';
+import { numberWithCommas } from '../helpers/counters.js';
 
 const FilterRatings = (props) => {
   const { overall, handleToggleFilter } = props;
@@ -132,11 +133,11 @@ FilterRatings.propTypes = {
   ),
   overall: PropTypes.shape(
     {
-      excellent: PropTypes.shape({ amt: PropTypes.string, percent: PropTypes.string }),
-      veryGood: PropTypes.shape({ amt: PropTypes.string, percent: PropTypes.string }),
-      average: PropTypes.shape({ amt: PropTypes.string, percent: PropTypes.string }),
-      poor: PropTypes.shape({ amt: PropTypes.string, percent: PropTypes.string }),
-      terrible: PropTypes.shape({ amt: PropTypes.string, percent: PropTypes.string }),
+      excellent: PropTypes.shape({ amt: PropTypes.number, percent: PropTypes.number }),
+      veryGood: PropTypes.shape({ amt: PropTypes.number, percent: PropTypes.number }),
+      average: PropTypes.shape({ amt: PropTypes.number, percent: PropTypes.number }),
+      poor: PropTypes.shape({ amt: PropTypes.number, percent: PropTypes.number }),
+      terrible: PropTypes.shape({ amt: PropTypes.number, percent: PropTypes.number }),
     },
   ).isRequired,
   handleToggleFilter: PropTypes.func.isRequired,
