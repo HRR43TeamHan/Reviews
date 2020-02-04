@@ -151,8 +151,6 @@ var seedLocationPhotos = () => {
         let photosa = photos.join(`",${photoSeedCount}),("`);
         var queryString =
           `INSERT INTO LocationPhotos (url, review_id) VALUES ("${photosa}", ${photoSeedCount})`;
-
-        console.log(queryString);
         db.connection.query(queryString, photos, (err, result) => {
           if (err) {
             console.error(err);
@@ -163,7 +161,6 @@ var seedLocationPhotos = () => {
             } else {
               db.connection.end();
             }
-            console.log(result);
           }
         });
 
