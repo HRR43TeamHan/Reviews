@@ -15,7 +15,7 @@ const FilterPopularMentions = (props) => {
       </FilterTitle>
       TODO - FilterPopularMentions.jsx
             Tons of fake buttons here
-      <PopularMentionsButton>
+      <PopularMentionsButton onClick={handleToggleFilter} name="popular">
         All of them!
       </PopularMentionsButton>
     </PopularMentionsCard>
