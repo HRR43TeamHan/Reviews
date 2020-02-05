@@ -2,6 +2,10 @@ const faker = require('faker');
 const db = require('./database');
 //faker.seed(12);
 faker.locale = 'en';
+const seeder = {
+  users: 100,
+  reviews: 10000,
+}
 // Because the seeder runs outside of the app we need to first connect to the db
 db.connection.connect(function (err) {
   if (err) {
@@ -117,7 +121,7 @@ var seedUsers = (amount) => {
           seedIt();
         } else {
           console.log('Entry# ', usersCount, ' INSERT INTO Users... Completed 👍');
-          seedReviews(amount * 10000);
+          seedReviews(amount * seeder.reviews);
         }
       }
     });
@@ -178,4 +182,4 @@ var seedLocationPhotos = () => {
     });
 }
 
-seedUsers(100);
+seedUsers(seeder.users);
