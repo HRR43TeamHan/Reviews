@@ -6,9 +6,8 @@ import {
   NoResultsLink,
 } from '../css/reviewsCSS.js';
 
-const ReviewsList = (props) => {
+function ReviewsList(props) {
   const { paginatedReviews, handleToggleFilter } = props;
-  console.log('page: ', paginatedReviews);
   if (!paginatedReviews.length) {
     return (
       <NoResults name="clear" onClick={handleToggleFilter}>
@@ -28,7 +27,7 @@ const ReviewsList = (props) => {
       {paginatedReviews.map((review, i) => <ReviewsItem id={i} key={review.ID} review={review} />)}
     </div>
   );
-};
+}
 
 
 ReviewsList.propTypes = {

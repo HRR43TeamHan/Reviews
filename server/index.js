@@ -16,7 +16,8 @@ db.connection.connect((err) => {
   }
   console.log('Connected to database.');
 });
-
+// Serve the bundle file for proxy server access
+app.use('/bundle.js', express.static(__dirname + '/../public/bundle.js'));
 // Serve the public folder for client
 app.use('/:location_id', express.static('public'));
 // Use JSON for data parsing
@@ -36,7 +37,7 @@ app.get('/api/reviews/languages/', (req, res) => {
   console.log(req.body);
 });
 
-app.get('/api/reviews/:location_id/', (req, res) => {
+app.get(`/api/reviews/:location_id/`, (req, res) => {
   // TODO - place the db function for GET reviews here
   db.getReviews(req.params.location_id, (error, data) => {
     if (error) {
