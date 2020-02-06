@@ -37,7 +37,7 @@ function Tabs(props) {
         <styles.iconSpan name="view" id="2">
           <i className="fas fa-comment-alt fa-2x" name="view" id="2" />
         </styles.iconSpan>
-        <styles.textSpan name="view" id="2">713</styles.textSpan>
+        <styles.textSpan name="view" id="2">712</styles.textSpan>
         <styles.textSpan name="view" id="2">Q&A</styles.textSpan>
       </styles.tabSelectedSpan>
     );
@@ -47,7 +47,7 @@ function Tabs(props) {
         <styles.iconSpan name="view" id="2">
           <i className="fas fa-comment-alt fa-2x" name="view" id="2" />
         </styles.iconSpan>
-        <styles.textSpan name="view" id="2">713</styles.textSpan>
+        <styles.textSpan name="view" id="2">712</styles.textSpan>
         <styles.textSpan name="view" id="2">Q&A</styles.textSpan>
       </styles.tabSpan>
     );
@@ -59,7 +59,7 @@ function Tabs(props) {
         <styles.iconSpan name="view" id="3">
           <i className="fas fa-lightbulb fa-2x" name="view" id="3" />
         </styles.iconSpan>
-        <styles.textSpan name="view" id="3">666</styles.textSpan>
+        <styles.textSpan name="view" id="3">606</styles.textSpan>
         <styles.textSpan name="view" id="3">Room Tips</styles.textSpan>
       </styles.tabSelectedSpan>
     );
@@ -69,7 +69,7 @@ function Tabs(props) {
         <styles.iconSpan name="view" id="3">
           <i className="fas fa-lightbulb fa-2x" name="view" id="3" />
         </styles.iconSpan>
-        <styles.textSpan name="view" id="3">666</styles.textSpan>
+        <styles.textSpan name="view" id="3">606</styles.textSpan>
         <styles.textSpan name="view" id="3">Room Tips</styles.textSpan>
       </styles.tabSpan>
     );
