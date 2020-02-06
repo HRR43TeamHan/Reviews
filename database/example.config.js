@@ -1,0 +1,6 @@
+module.exports = {
+  USERNAME: 'FILL_IN_USERNAME',
+  DATABASE: 'HRR43_FEC',
+  HOSTNAME: 'FILL_IN_HOSTNAME',
+  PASSWORD: undefined,
+};

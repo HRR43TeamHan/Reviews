@@ -51,7 +51,7 @@ function FilterRatings(props) {
               <ReviewFilterFill style={excellentWidth} />
             </ReviewFilterBar>
           </ReviewFilterBarCell>
-          {overall.excellent.amt}
+          {numberWithCommas(overall.excellent.amt)}
         </FilterTableRow>
 
         <FilterTableRow>
@@ -83,7 +83,7 @@ function FilterRatings(props) {
               <ReviewFilterFill style={averageWidth} />
             </ReviewFilterBar>
           </ReviewFilterBarCell>
-          {overall.average.amt}
+          {numberWithCommas(overall.average.amt)}
         </FilterTableRow>
 
         <FilterTableRow>
@@ -99,7 +99,7 @@ function FilterRatings(props) {
               <ReviewFilterFill style={poorWidth} />
             </ReviewFilterBar>
           </ReviewFilterBarCell>
-          {overall.poor.amt}
+          {numberWithCommas(overall.poor.amt)}
         </FilterTableRow>
 
         <FilterTableRow>
@@ -115,7 +115,7 @@ function FilterRatings(props) {
               <ReviewFilterFill style={terribleWidth} />
             </ReviewFilterBar>
           </ReviewFilterBarCell>
-          {overall.terrible.amt}
+          {numberWithCommas(overall.terrible.amt)}
         </FilterTableRow>
 
       </FilterTable>

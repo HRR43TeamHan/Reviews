@@ -80,7 +80,8 @@ class Reviews extends React.Component {
         return response.data;
       })
       .catch((error) => {
-       console.error(error);
+        // eslint-disable-next-line no-console
+        console.error(error);
       })
       .then((reviewsArray) => {
         // this is always executed
@@ -192,9 +193,12 @@ class Reviews extends React.Component {
       );
     } else if (view === 3) {
       componentContainer = (
-        <div style={{ width: '860px' }}>
-          TODO - View 3(Room tips container) goes here!
-          <iframe width="100%" height="360" src="https://www.youtube.com/embed/fBsnlVh4J8M?start=2&autoplay=1" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen title="Jordan NeferGonna Let you Down" />
+        <div style={{ width: '100%', height: 'fit-content' }}>
+          Jordan Never Gonna
+          <video controls="" autoPlay="true" name="media">
+            <track src="https://heskett-assets.s3.us-east-2.amazonaws.com/videos/NeverGonna.vtt" kind="captions" srcLang="en" label="english_captions" />
+            <source src="https://heskett-assets.s3.us-east-2.amazonaws.com/videos/JordanNeverGonna.mp4" type="video/mp4" />
+          </video>
         </div>
       );
     }

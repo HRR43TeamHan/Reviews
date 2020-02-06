@@ -36,11 +36,12 @@
     "webpack-cli": "^3.3.10"
   },
   "scripts": {
-    "seeder": "node seeder.js",
+    "seed": "node seeder.js",
     "setup": "mysql -u root < ./schema.sql",
-    "devstart": "nodemon server/index.js --ignore src --ignore public",
-    "webpack": "webpack --watch",
+    "start:dev": "nodemon server/index.js --ignore node_modules",
+    "build:dev": "webpack --watch",
     "start": "node server/index.js",
+    "build": "webpack",
     "test": "jest"
   },
   "repository": {
