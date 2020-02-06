@@ -80,7 +80,8 @@ class Reviews extends React.Component {
         return response.data;
       })
       .catch((error) => {
-      // console.error(error);
+        // eslint-disable-next-line no-console
+        console.error(error);
       })
       .then((reviewsArray) => {
         // this is always executed
