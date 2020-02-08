@@ -9,7 +9,7 @@ import {
 function Search(props) {
   return (
     <SearchContainer>
-      <SearchIcon className="fas fa-search" />
+      <SearchIcon className="icon-search" />
       <SearchInput />
     </SearchContainer>
   );

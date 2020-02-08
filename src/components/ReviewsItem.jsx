@@ -118,7 +118,7 @@ class ReviewsItem extends React.Component {
           </UserPhotoContainer>
           <UserInfoContainer>
             <UserInfoPopUpButton onClick={handlePopUp}>
-              <i className="fas fa-ellipsis-h" />
+              <i className="icon-ellipsis-h" />
               {userInfoPopUp}
             </UserInfoPopUpButton>
             <UserInfoTop>
@@ -127,7 +127,7 @@ class ReviewsItem extends React.Component {
               {reviewDate}
             </UserInfoTop>
             <UserInfoBottom>
-              <i className="fas fa-map-marker-alt" />
+              <i className="icon-marker" />
               {' '}
               {review.location}
               {' • '}

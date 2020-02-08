@@ -185,7 +185,7 @@ class ReviewsContainer extends React.Component {
                   Write a Review
                 </styles.writeReviewBtnDiv>
                 <styles.optionBtnDiv>
-                  <i className="fas fa-sort-down" />
+                  <i className="icon-down-dir" />
                 </styles.optionBtnDiv>
               </styles.buttonsDiv>
             </styles.headerInnerDiv>
