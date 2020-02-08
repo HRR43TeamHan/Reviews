@@ -13,7 +13,7 @@ function Tabs(props) {
     tab1 = (
       <styles.tabSelectedSpan onClick={handleTabClick} name="view" id="1">
         <styles.iconSpan style={{ marginLeft: '10px' }} name="view" id="1">
-          <i className="fa fa-pencil-square-o fa-2x" aria-hidden="true" name="view" id="1" />
+          <i className="icon-pencil-square-o x2" name="view" id="1" />
         </styles.iconSpan>
         <styles.textSpan name="view" id="1">{numberWithCommas(reviewsAmt)}</styles.textSpan>
         <styles.textSpan name="view" id="1">Reviews</styles.textSpan>
@@ -23,7 +23,7 @@ function Tabs(props) {
     tab1 = (
       <styles.tabSpan onClick={handleTabClick} name="view" id="1">
         <styles.iconSpan style={{ marginLeft: '10px' }} name="view" id="1">
-          <i className="fa fa-pencil-square-o fa-2x" aria-hidden="true" name="view" id="1" />
+          <i className="icon-pencil-square-o x2" name="view" id="1" />
         </styles.iconSpan>
         <styles.textSpan name="view" id="1">{numberWithCommas(reviewsAmt)}</styles.textSpan>
         <styles.textSpan name="view" id="1">Reviews</styles.textSpan>
@@ -35,7 +35,7 @@ function Tabs(props) {
     tab2 = (
       <styles.tabSelectedSpan onClick={handleTabClick} name="view" id="2">
         <styles.iconSpan name="view" id="2">
-          <i className="fas fa-comment-alt fa-2x" name="view" id="2" />
+          <i className="icon-comment x2" name="view" id="2" />
         </styles.iconSpan>
         <styles.textSpan name="view" id="2">712</styles.textSpan>
         <styles.textSpan name="view" id="2">Q&A</styles.textSpan>
@@ -45,7 +45,7 @@ function Tabs(props) {
     tab2 = (
       <styles.tabSpan onClick={handleTabClick} name="view" id="2">
         <styles.iconSpan name="view" id="2">
-          <i className="fas fa-comment-alt fa-2x" name="view" id="2" />
+          <i className="icon-comment x2" name="view" id="2" />
         </styles.iconSpan>
         <styles.textSpan name="view" id="2">712</styles.textSpan>
         <styles.textSpan name="view" id="2">Q&A</styles.textSpan>
@@ -57,7 +57,7 @@ function Tabs(props) {
     tab3 = (
       <styles.tabSelectedSpan onClick={handleTabClick} name="view" id="3">
         <styles.iconSpan name="view" id="3">
-          <i className="fas fa-lightbulb fa-2x" name="view" id="3" />
+          <i className="icon-lightbulb-o x2" name="view" id="3" />
         </styles.iconSpan>
         <styles.textSpan name="view" id="3">606</styles.textSpan>
         <styles.textSpan name="view" id="3">Room Tips</styles.textSpan>
@@ -67,7 +67,7 @@ function Tabs(props) {
     tab3 = (
       <styles.tabSpan onClick={handleTabClick} name="view" id="3">
         <styles.iconSpan name="view" id="3">
-          <i className="fas fa-lightbulb fa-2x" name="view" id="3" />
+          <i className="icon-lightbulb-o x2" name="view" id="3" />
         </styles.iconSpan>
         <styles.textSpan name="view" id="3">606</styles.textSpan>
         <styles.textSpan name="view" id="3">Room Tips</styles.textSpan>

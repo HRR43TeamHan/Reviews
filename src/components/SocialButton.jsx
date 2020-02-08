@@ -10,7 +10,7 @@ function SocialButton(props) {
   if (label === 'Helpful') {
     button = (
       <SocialSpan>
-        <i className="fas fa-share" />
+        <i className="icon-share" />
         <SocialText>
           {label}
         </SocialText>
@@ -19,7 +19,7 @@ function SocialButton(props) {
   } else if (label === 'Share') {
     button = (
       <SocialSpan>
-        <i className="fas fa-thumbs-up" />
+        <i className="icon-thumbs-up" />
         <SocialText>
           {label}
         </SocialText>
