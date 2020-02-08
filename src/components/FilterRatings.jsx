@@ -17,19 +17,19 @@ function FilterRatings(props) {
   const { overall, handleToggleFilter } = props;
   if (!overall) return null;
   const excellentWidth = {
-    width: overall.excellent.percent,
+    width: `${overall.excellent.percent}%`,
   };
   const veryGoodWidth = {
-    width: overall.veryGood.percent,
+    width: `${overall.veryGood.percent}%`,
   };
   const averageWidth = {
-    width: overall.average.percent,
+    width: `${overall.average.percent}%`,
   };
   const poorWidth = {
-    width: overall.poor.percent,
+    width: `${overall.poor.percent}%`,
   };
   const terribleWidth = {
-    width: overall.terrible.percent,
+    width: `${overall.terrible.percent}%`,
   };
   return (
     <RatingsCard>
@@ -67,7 +67,7 @@ function FilterRatings(props) {
               <ReviewFilterFill style={veryGoodWidth} />
             </ReviewFilterBar>
           </ReviewFilterBarCell>
-          {overall.veryGood.amt}
+          {numberWithCommas(overall.veryGood.amt)}
         </FilterTableRow>
 
         <FilterTableRow>
@@ -123,21 +123,14 @@ function FilterRatings(props) {
   );
 }
 
-FilterRatings.defaultProps = {
-  languageCount: undefined,
-};
-
 FilterRatings.propTypes = {
-  languageCount: PropTypes.shape(
-    { 0: PropTypes.shape({ title: PropTypes.string, value: PropTypes.number }) },
-  ),
   overall: PropTypes.shape(
     {
-      excellent: PropTypes.shape({ amt: PropTypes.number, percent: PropTypes.number }),
-      veryGood: PropTypes.shape({ amt: PropTypes.number, percent: PropTypes.number }),
-      average: PropTypes.shape({ amt: PropTypes.number, percent: PropTypes.number }),
-      poor: PropTypes.shape({ amt: PropTypes.number, percent: PropTypes.number }),
-      terrible: PropTypes.shape({ amt: PropTypes.number, percent: PropTypes.number }),
+      excellent: PropTypes.shape({ amt: PropTypes.number, percent: PropTypes.string }),
+      veryGood: PropTypes.shape({ amt: PropTypes.number, percent: PropTypes.string }),
+      average: PropTypes.shape({ amt: PropTypes.number, percent: PropTypes.string }),
+      poor: PropTypes.shape({ amt: PropTypes.number, percent: PropTypes.string }),
+      terrible: PropTypes.shape({ amt: PropTypes.number, percent: PropTypes.string }),
     },
   ).isRequired,
   handleToggleFilter: PropTypes.func.isRequired,
