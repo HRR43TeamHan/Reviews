@@ -222,7 +222,6 @@ ReviewsContainer.propTypes = {
   overall: PropTypes.shape(
     {
       firstFormat: PropTypes.shape({ amt: PropTypes.string, percent: PropTypes.string }),
-      secondFormat: PropTypes.shape({ amt: PropTypes.number, percent: PropTypes.number }),
     },
   ).isRequired,
 };

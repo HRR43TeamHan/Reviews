@@ -141,16 +141,12 @@ class Reviews extends React.Component {
         overall.excellent.amt += 1;
       }
     });
-    overall.excellent.percent = `${((overall.excellent.amt / total) * 100).toFixed(4)}%`;
-    overall.veryGood.percent = `${((overall.veryGood.amt / total) * 100).toFixed(4)}%`;
-    overall.average.percent = `${((overall.average.amt / total) * 100).toFixed(4)}%`;
-    overall.poor.percent = `${((overall.poor.amt / total) * 100).toFixed(4)}%`;
-    overall.terrible.percent = `${((overall.terrible.amt / total) * 100).toFixed(4)}%`;
-    overall.terrible.amt = this.numberWithCommas(overall.terrible.amt);
-    overall.poor.amt = this.numberWithCommas(overall.poor.amt);
-    overall.average.amt = this.numberWithCommas(overall.average.amt);
-    overall.veryGood.amt = this.numberWithCommas(overall.veryGood.amt);
-    overall.excellent.amt = this.numberWithCommas(overall.excellent.amt);
+    overall.excellent.percent = ((overall.excellent.amt / total) * 100).toFixed(4);
+    overall.veryGood.percent = ((overall.veryGood.amt / total) * 100).toFixed(4);
+    overall.average.percent = ((overall.average.amt / total) * 100).toFixed(4);
+    overall.poor.percent = ((overall.poor.amt / total) * 100).toFixed(4);
+    overall.terrible.percent = ((overall.terrible.amt / total) * 100).toFixed(4);
+    console.log(overall);
     this.setState({
       overall,
     });
@@ -188,12 +184,12 @@ class Reviews extends React.Component {
       );
     } else if (view === 2) {
       componentContainer = (
-        <div style={{ width: '860px' }}>TODO - View 2(QA container) goes here!</div>
+        <div style={{ width: '66.66%' }}>TODO - View 2(QA container) goes here!</div>
 
       );
     } else if (view === 3) {
       componentContainer = (
-        <div style={{ width: '100%', height: 'fit-content' }}>
+        <div style={{ width: '66.66%', height: 'fit-content' }}>
           Jordan Never Gonna
           <video controls="" autoPlay="true" name="media">
             <track src="https://heskett-assets.s3.us-east-2.amazonaws.com/videos/NeverGonna.vtt" kind="captions" srcLang="en" label="english_captions" />
