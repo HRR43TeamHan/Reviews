@@ -158,6 +158,7 @@ styles.containerDiv = styled.div({
   flex: 'none',
   verticalAlign: 'middle',
   color: 'black',
+  width: '66.66vw',
 });
 
 styles.filtersContainer = styled.div({

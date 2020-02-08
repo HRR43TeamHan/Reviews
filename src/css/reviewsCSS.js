@@ -123,7 +123,6 @@ export const ReviewTitle = styled.div({
 export const ReviewContainer = styled.div({
   padding: '0 24px',
   marginBottom: '12px',
-  width: '66.6%',
 });
 
 export const Description = styled.div({

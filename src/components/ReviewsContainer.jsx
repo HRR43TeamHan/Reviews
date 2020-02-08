@@ -173,7 +173,7 @@ class ReviewsContainer extends React.Component {
     const paginatedReviews = currentReviews.slice(start, end);
     // console.log('paginatedReviews:', paginatedReviews);
     return (
-      <div>
+      <div style={{ width: '66.66vw' }}>
         <Global styles={styles.global} />
         <div>
           <styles.headerOuterDiv>

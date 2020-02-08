@@ -30,6 +30,6 @@ function SocialButton(props) {
   }
 
   return button;
-};
+}
 
 export default SocialButton;
