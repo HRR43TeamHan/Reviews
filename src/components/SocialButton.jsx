@@ -10,7 +10,7 @@ function SocialButton(props) {
   if (label === 'Helpful') {
     button = (
       <SocialSpan>
-        <i className="icon-share" />
+        <i className="icon-thumbs-up" />
         <SocialText>
           {label}
         </SocialText>
@@ -19,14 +19,14 @@ function SocialButton(props) {
   } else if (label === 'Share') {
     button = (
       <SocialSpan>
-        <i className="icon-thumbs-up" />
+        <i className="icon-share" />
         <SocialText>
           {label}
         </SocialText>
       </SocialSpan>
     );
   } else {
-    button = <span>Need to set label prop of Social Button</span>;
+    button = <span>Must set label prop of SocialButton</span>;
   }
 
   return button;
