@@ -13,10 +13,8 @@ function FilterPopularMentions(props) {
       <FilterTitle>
         Popular Mentions
       </FilterTitle>
-      TODO - FilterPopularMentions.jsx
-            Tons of fake buttons here
       <PopularMentionsButton onClick={handleToggleFilter} name="popular">
-        All of them!
+        All
       </PopularMentionsButton>
     </PopularMentionsCard>
   );
